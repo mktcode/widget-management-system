@@ -58,32 +58,36 @@ abstract class ContentType
      * Renders the final output of the content type.
      *
      * @param $contentId
-     * @return void
+     * @return string
      */
     public function render($contentId)
     {
         $widgetfile = __DIR__ . '/' . $this->getClass() . '/widget.php';
         if (file_exists($widgetfile)) {
+            ob_start();
             include $widgetfile;
+            return ob_get_clean();
         }
 
-        echo '';
+        return '';
     }
 
     /**
      * Renders the form for backend editing.
      *
      * @param null $contentId
-     * @return void
+     * @return string
      */
     public function form($contentId = null)
     {
         $formfile = __DIR__ . '/' . $this->getClass() . '/form.php';
         if (file_exists($formfile)) {
+            ob_start();
             include $formfile;
+            return ob_get_clean();
         }
 
-        echo '';
+        return '';
     }
 
     /**

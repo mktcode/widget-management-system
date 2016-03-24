@@ -34,7 +34,7 @@ $content = $vars['content'];
             <input type="text" name="title" class="uk-form-large uk-width-1-1" value="<?php if ($content) { echo $content->getTitle(); } ?>" required />
         </label>
 
-        <?php $contentType->form(); ?>
+        <?php echo $contentType->form(); ?>
 
         <button type="submit" class="uk-button uk-button-success uk-margin-top uk-margin-top">
             <i class="uk-icon-check"></i>

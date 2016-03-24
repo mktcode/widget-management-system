@@ -32,6 +32,11 @@ class FacebookLikeBox extends ContentType
         return 'facebook';
     }
 
+    /**
+     * Returns the label for the button.
+     *
+     * @return string
+     */
     public function getLabel()
     {
         return 'Facebook Like Box';
