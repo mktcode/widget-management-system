@@ -31,6 +31,16 @@ abstract class ContentType
     protected $routing;
 
     /**
+     * Returns the name of the extending class without the namespace.
+     *
+     * @return mixed
+     */
+    protected function getClass()
+    {
+        return array_pop(explode('\\', get_class($this)));
+    }
+
+    /**
      * Set commonly needed services.
      *
      * @param Config $config
@@ -48,22 +58,32 @@ abstract class ContentType
      * Renders the final output of the content type.
      *
      * @param $contentId
-     * @return string
+     * @return void
      */
     public function render($contentId)
     {
-        echo array_pop(explode('\\', get_class($this)));
+        $widgetfile = __DIR__ . '/' . $this->getClass() . '/widget.php';
+        if (file_exists($widgetfile)) {
+            include $widgetfile;
+        }
+
+        echo '';
     }
 
     /**
      * Renders the form for backend editing.
      *
      * @param null $contentId
-     * @return string
+     * @return void
      */
     public function form($contentId = null)
     {
-        return '';
+        $formfile = __DIR__ . '/' . $this->getClass() . '/form.php';
+        if (file_exists($formfile)) {
+            include $formfile;
+        }
+
+        echo '';
     }
 
     /**
@@ -73,7 +93,7 @@ abstract class ContentType
      */
     public function getLabel()
     {
-        return array_pop(explode('\\', get_class($this)));
+        return $this->getClass();
     }
 
     /**

@@ -14,9 +14,13 @@ content_types:
     path:     /content/types
     defaults: { _controller: 'App\Controller\ContentController::contentTypesAction' }
 
-content_new:
-    path:     /content/new/{contentTypeId}
-    defaults: { _controller: 'App\Controller\ContentController::newAction' }
+content_form:
+    path:     /content/form/{contentTypeId}/{contentId}
+    defaults: { _controller: 'App\Controller\ContentController::formAction', contentId: null }
+
+content_delete:
+    path:     /content/delete/{contentId}
+    defaults: { _controller: 'App\Controller\ContentController::deleteAction' }
 
 template_edit:
     path:     /template/edit/{file}

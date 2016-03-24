@@ -12,26 +12,6 @@ use App\ContentType\ContentType;
 
 class Wysiwyg extends ContentType
 {
-    public function render($contentId)
-    {
-        return 'Wysiwyg';
-    }
-
-    public function form($contentId = null)
-    {
-        include __DIR__ . '/form.php';
-    }
-
-    public function save($contentId, $data = [])
-    {
-        return true;
-    }
-
-    public function update($contentId)
-    {
-        return true;
-    }
-
     public function getButtonClasses()
     {
         return 'uk-button-success';

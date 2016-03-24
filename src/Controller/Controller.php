@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\ContentType\ContentTypeInterface;
+use App\ContentType\ContentType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Persisters\Entity\EntityPersister;
 use Symfony\Component\Config\Definition\Exception\Exception;
@@ -43,7 +43,7 @@ class Controller implements ContainerAwareInterface
      * Gets a content type. (Alias for getService)
      *
      * @param $contentTypeId
-     * @return ContentTypeInterface
+     * @return ContentType
      */
     public function getContentType($contentTypeId)
     {

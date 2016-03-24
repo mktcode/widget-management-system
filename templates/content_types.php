@@ -1,6 +1,6 @@
 <?php
 
-use App\ContentType\ContentTypeInterface;
+use App\ContentType\ContentType;
 
 include 'header.php'; ?>
 
@@ -8,11 +8,11 @@ include 'header.php'; ?>
 
     <div class="uk-grid" data-uk-grid-margin>
         <?php
-        /** @var ContentTypeInterface $contentType */
+        /** @var ContentType $contentType */
         foreach ($vars['contentTypes'] as $contentTypeId => $contentType) {
             ?>
             <div class="uk-width-medium-1-3">
-            <a href="<?php echo $this->getUrl('content_new', ['contentTypeId' => $contentTypeId]); ?>"
+            <a href="<?php echo $this->getUrl('content_form', ['contentTypeId' => $contentTypeId]); ?>"
                class="uk-button uk-button-large button-huge uk-width-1-1 <?php echo $contentType->getButtonClasses(
                ); ?>">
                 <?php

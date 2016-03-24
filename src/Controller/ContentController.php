@@ -3,13 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Content;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ContentController extends Controller
 {
+
     /**
      * Lists all existing contents.
      *
-     * @return string
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
@@ -22,7 +24,7 @@ class ContentController extends Controller
     /**
      * Shows a list of available content types.
      *
-     * @return string
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function contentTypesAction()
     {
@@ -36,26 +38,56 @@ class ContentController extends Controller
      * Shows the dialog for a new content and calls the save method of the content type if data is posted.
      *
      * @param $contentTypeId
-     * @return string
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function newAction($contentTypeId)
+    public function formAction($contentTypeId, $contentId = null)
     {
         $contentType = $this->getContentType($contentTypeId);
+        $content = null;
+        $message = '';
+
+        if ($contentId) {
+            $content = $this->getEntityLoader('App\Entity\Content')->loadById(['id' => $contentId]);
+        }
 
         if ($_POST) {
             // save content entity
-            $content = new Content();
-            $content->setTitle(trim($_POST['title']));
-            $content->setType($contentTypeId);
-            $content->setHash(md5(time() . uniqid()));
+            if (!$content) {
+                $content = new Content();
+                $this->getEntityManager()->persist($content);
 
-            $this->getEntityManager()->persist($content);
+                $content->setType($contentTypeId);
+                $content->setHash(md5(time() . uniqid()));
+            }
+            $content->setTitle(trim($_POST['title']));
+
             $this->getEntityManager()->flush();
 
             // call type specific save method
             $contentType->save($content->getId(), $_POST);
+
+            $message = '<i class="uk-icon-check"></i> Inhalt gespeichert!';
         }
 
-        return $this->render(['contentType' => $contentType, 'contentTypeId' => $contentTypeId]);
+        return $this->render([
+            'content' => $content,
+            'contentId' => $contentId,
+            'contentType' => $contentType,
+            'contentTypeId' => $contentTypeId,
+            'message' => $message
+        ]);
+    }
+
+    /**
+     * @param $contentId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function deleteAction($contentId)
+    {
+        $content = $this->getEntityLoader('App\Entity\Content')->loadById(['id' => $contentId]);
+        $this->getEntityManager()->remove($content);
+        $this->getEntityManager()->flush();
+
+        return new RedirectResponse($this->getUrl('index'));
     }
 }
