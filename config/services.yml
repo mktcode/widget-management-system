@@ -1,0 +1,37 @@
+services:
+
+    ############
+    ### Core ###
+    ############
+
+    config:
+        class: App\Service\Config
+
+    database:
+        class: App\Service\Database
+        arguments: ['@config']
+
+    request:
+        class: Symfony\Component\HttpFoundation\Request
+        factory: [Symfony\Component\HttpFoundation\Request, createFromGlobals]
+
+    request_context:
+        class: Symfony\Component\Routing\RequestContext
+        calls: [[fromRequest, ['@request']]]
+
+    routing:
+        class: App\Service\Routing
+        arguments: ['@request', '@request_context']
+
+
+    #####################
+    ### Content Types ###
+    #####################
+
+    wysiwyg:
+        class: App\ContentType\Wysiwyg\Wysiwyg
+        tags: [{name: content_type}]
+
+    facebook_like_box:
+        class: App\ContentType\FacebookLikeBox\FacebookLikeBox
+        tags: [{name: content_type}]

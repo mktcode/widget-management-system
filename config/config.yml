@@ -1,0 +1,6 @@
+page.title: My First Social Media Page
+db.host: localhost
+db.user: mkt
+db.pass: 54600
+db.name: smp
+facebook.fanpage: https://www.facebook.com/crea.werbeagentur/

@@ -1,0 +1,31 @@
+login:
+    path:     /login
+    defaults: { _controller: 'App\Controller\SecurityController::loginAction' }
+
+logout:
+    path:     /logout
+    defaults: { _controller: 'App\Controller\SecurityController::logoutAction' }
+
+index:
+    path:     /
+    defaults: { _controller: 'App\Controller\ContentController::indexAction' }
+
+content_types:
+    path:     /content/types
+    defaults: { _controller: 'App\Controller\ContentController::contentTypesAction' }
+
+content_new:
+    path:     /content/new/{contentTypeId}
+    defaults: { _controller: 'App\Controller\ContentController::newAction' }
+
+template_edit:
+    path:     /template/edit/{file}
+    defaults: { _controller: 'App\Controller\TemplateController::editAction' }
+    requirements:
+        file: .+
+
+template:
+    path:     /template/{dir}
+    defaults: { _controller: 'App\Controller\TemplateController::indexAction', dir: '' }
+    requirements:
+        dir: .+
