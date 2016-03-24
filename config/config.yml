@@ -1,6 +1,8 @@
-page.title: My First Social Media Page
-db.host: localhost
-db.user: mkt
-db.pass: 54600
-db.name: smp
-facebook.fanpage: https://www.facebook.com/crea.werbeagentur/
+# This file is auto-generated during the composer install
+config:
+    page.title: 'Non-Static Html Page'
+    db.host: localhost
+    db.user: mkt
+    db.pass: 54600
+    db.name: notsostatic
+    facebook.fanpage: 'https://www.facebook.com'

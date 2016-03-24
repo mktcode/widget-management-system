@@ -19,7 +19,7 @@ class Config
     public function __construct()
     {
         $yaml = new Parser();
-        $this->config = $yaml->parse(file_get_contents(__DIR__ . '/../../config/config.yml'));
+        $this->config = $yaml->parse(file_get_contents(__DIR__ . '/../../config/config.yml'))['config'];
     }
 
     public function get($key)

@@ -1,0 +1,7 @@
+config:
+    page.title: Not-So-Static Html Website
+    db.host: localhost
+    db.user: root
+    db.pass: root
+    db.name: notsostatic
+    facebook.fanpage: https://www.facebook.com

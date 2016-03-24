@@ -3,3 +3,4 @@ vendor
 web/*
 !web/backend.php
 !web/frontend.php
+config/config.yml
