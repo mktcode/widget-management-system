@@ -7,10 +7,14 @@ include 'header.php';
     </h2>
 
     <form class="uk-form" method="post" action="<?php echo $this->getUrl('template_edit', ['file' => $vars['file']]); ?>">
+        <button type="submit" class="uk-button uk-button-success uk-margin-top uk-margin-bottom">
+            <i class="uk-icon-check"></i>
+            Speichern
+        </button>
         <label>
             <textarea id="file" name="file"><?php echo $vars['content']; ?></textarea>
         </label>
-        <button type="submit" class="uk-button uk-button-success uk-margin-top">
+        <button type="submit" class="uk-button uk-button-success uk-margin-top uk-margin-bottom">
             <i class="uk-icon-check"></i>
             Speichern
         </button>
