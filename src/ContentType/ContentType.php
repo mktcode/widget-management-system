@@ -9,6 +9,7 @@
 namespace App\ContentType;
 
 
+use App\Entity\ContentData;
 use App\Service\Config;
 use App\Service\Database;
 use App\Service\Routing;
@@ -55,6 +56,22 @@ abstract class ContentType
     }
 
     /**
+     * @param $key
+     * @param $contentId
+     * @return string
+     */
+    public function getData($key, $contentId)
+    {
+        $contentData = $this->database->getLoader('App\Entity\ContentData')->load(['content' => $contentId, 'dataKey' => $key]);
+
+        if ($contentData) {
+            return $contentData->getDataValue();
+        }
+
+        return '';
+    }
+
+    /**
      * Renders the final output of the content type.
      *
      * @param $contentId
@@ -64,6 +81,7 @@ abstract class ContentType
     {
         $widgetfile = __DIR__ . '/' . $this->getClass() . '/widget.php';
         if (file_exists($widgetfile)) {
+            $content = $this->database->getLoader('App\Entity\Content')->load(['id' => $contentId]);
             ob_start();
             include $widgetfile;
             return ob_get_clean();
@@ -82,6 +100,7 @@ abstract class ContentType
     {
         $formfile = __DIR__ . '/' . $this->getClass() . '/form.php';
         if (file_exists($formfile)) {
+            $content = $this->database->getLoader('App\Entity\Content')->load(['id' => $contentId]);
             ob_start();
             include $formfile;
             return ob_get_clean();
@@ -129,17 +148,20 @@ abstract class ContentType
      */
     public function save($contentId, $data = [])
     {
-        return true;
-    }
+        $content = $this->database->getLoader('App\Entity\Content')->load(['id' => $contentId]);
+        foreach ($data as $key => $value) {
+            if ($key == 'title') continue;
+            $contentData = $this->database->getLoader('App\Entity\ContentData')->load(['content' => $contentId, 'dataKey' => $key]);
+            if (!$contentData) {
+                $contentData = new ContentData();
+                $this->database->em->persist($contentData);
+                $contentData->setContent($content);
+                $contentData->setDataKey($key);
+            }
+            $contentData->setDataValue($value);
+        }
+        $this->database->em->flush();
 
-    /**
-     * Updates the additional data.
-     *
-     * @param $contentId
-     * @return bool
-     */
-    public function update($contentId)
-    {
         return true;
     }
 }

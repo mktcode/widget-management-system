@@ -85,6 +85,10 @@ class ContentController extends Controller
     public function deleteAction($contentId)
     {
         $content = $this->getEntityLoader('App\Entity\Content')->loadById(['id' => $contentId]);
+        $contentData = $this->getEntityLoader('App\Entity\ContentData')->loadAll(['content' => $contentId]);
+        foreach ($contentData as $data) {
+            $this->getEntityManager()->remove($data);
+        }
         $this->getEntityManager()->remove($content);
         $this->getEntityManager()->flush();
 

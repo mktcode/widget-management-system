@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\Table;
 
 /**
@@ -42,6 +44,12 @@ class Content
      * @Column(type="text", length=32)
      */
     protected $hash;
+
+    /**
+     * @var ArrayCollection
+     * @OneToMany(targetEntity="App\Entity\ContentData", mappedBy="content")
+     */
+    protected $contentData;
 
     /**
      * @return mixed
@@ -106,5 +114,21 @@ class Content
         $this->type = $type;
 
         return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getContentData()
+    {
+        return $this->contentData;
+    }
+
+    /**
+     * @param ArrayCollection $contentData
+     */
+    public function setContentData($contentData)
+    {
+        $this->contentData = $contentData;
     }
 }

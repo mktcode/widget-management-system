@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\Table;
 
 /**
@@ -29,13 +30,19 @@ class ContentData
      * @var string
      * @Column(type="text")
      */
-    protected $key;
+    protected $dataKey;
 
     /**
      * @var string
      * @Column(type="text")
      */
-    protected $value;
+    protected $dataValue;
+
+    /**
+     * @var Content
+     * @ManyToOne(targetEntity="App\Entity\Content", inversedBy="contentData")
+     */
+    protected $content;
 
     /**
      * @return mixed
@@ -48,18 +55,18 @@ class ContentData
     /**
      * @return string
      */
-    public function getKey()
+    public function getDataKey()
     {
-        return $this->key;
+        return $this->dataKey;
     }
 
     /**
-     * @param string $key
+     * @param string $dataKey
      * @return $this
      */
-    public function setKey($key)
+    public function setDataKey($dataKey)
     {
-        $this->key = $key;
+        $this->dataKey = $dataKey;
 
         return $this;
     }
@@ -67,18 +74,37 @@ class ContentData
     /**
      * @return string
      */
-    public function getValue()
+    public function getDataValue()
     {
-        return $this->value;
+        return $this->dataValue;
     }
 
     /**
-     * @param string $value
+     * @param string $dataValue
      * @return $this
      */
-    public function setValue($value)
+    public function setDataValue($dataValue)
     {
-        $this->value = $value;
+        $this->dataValue = $dataValue;
+
+        return $this;
+    }
+
+    /**
+     * @return object
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param object $content
+     * @return $this
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
 
         return $this;
     }

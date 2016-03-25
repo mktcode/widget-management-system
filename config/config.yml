@@ -1,8 +1,7 @@
 # This file is auto-generated during the composer install
 config:
-    page.title: 'Non-Static Html Page'
+    page.title: 'Not-So-Static Html Website'
     db.host: localhost
     db.user: mkt
     db.pass: 54600
     db.name: notsostatic
-    facebook.fanpage: 'https://www.facebook.com'

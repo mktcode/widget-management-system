@@ -4,4 +4,3 @@ config:
     db.user: root
     db.pass: root
     db.name: notsostatic
-    facebook.fanpage: https://www.facebook.com

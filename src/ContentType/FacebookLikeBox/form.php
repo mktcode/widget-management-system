@@ -1,5 +1,4 @@
-<p>Keine weiteren Einstellungen nötig. Klicke auf Speichern um ein neues Like Box Element zu erstellen.</p>
-<div class="uk-alert uk-alert-danger">
-    <i class="uk-icon-warning"></i>
-    Wenn du bereits ein Element von diesem Typ angelegt hast, kannst du auch einfach dieses mehrfach in deinem Template verwenden.
-</div>
+<label>
+    Fanpage-URL<br>
+    <input type="url" class="uk-width-1-1" value="<?php echo $content ? $this->getData('url', $content->getId()) : ''; ?>" name="url" placeholder="http://..."/>
+</label>

@@ -8,10 +8,10 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
-<div class="fb-page" data-href="<?php echo $this->config->get('facebook.fanpage'); ?>" data-tabs="timeline" data-small-header="false"
+<div class="fb-page" data-href="<?php echo $this->getData('url', $contentId); ?>" data-tabs="timeline" data-small-header="false"
      data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
     <div class="fb-xfbml-parse-ignore">
-        <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/facebook">Facebook</a>
+        <blockquote cite="<?php echo $this->getData('url', $contentId); ?>"><a href="<?php echo $this->getData('url', $contentId); ?>">Facebook</a>
         </blockquote>
     </div>
 </div>
