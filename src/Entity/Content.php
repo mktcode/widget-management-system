@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\Table;
 
@@ -50,6 +51,17 @@ class Content
      * @OneToMany(targetEntity="App\Entity\ContentData", mappedBy="content")
      */
     protected $contentData;
+
+    /**
+     * @var Content
+     * @ManyToOne(targetEntity="App\Entity\ContentCategory", inversedBy="contents")
+     */
+    protected $contentCategory;
+
+    public function __construct()
+    {
+        $this->contentData = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -125,10 +137,30 @@ class Content
     }
 
     /**
-     * @param ArrayCollection $contentData
+     * @param ContentData $contentData
      */
-    public function setContentData($contentData)
+    public function addContentData($contentData)
     {
-        $this->contentData = $contentData;
+        $this->contentData[] = $contentData;
+        $contentData->setContent($this);
+    }
+
+    /**
+     * @return ContentCategory
+     */
+    public function getContentCategory()
+    {
+        return $this->contentCategory;
+    }
+
+    /**
+     * @param ContentCategory $contentCategory
+     * @return $this
+     */
+    public function setContentCategory($contentCategory)
+    {
+        $this->contentCategory = $contentCategory;
+
+        return $this;
     }
 }

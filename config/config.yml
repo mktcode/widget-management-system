@@ -1,6 +1,6 @@
 # This file is auto-generated during the composer install
 config:
-    page.title: 'Not-So-Static Html Website'
+    page.title: 'Antistatic Html Website'
     db.host: localhost
     db.user: mkt
     db.pass: 54600

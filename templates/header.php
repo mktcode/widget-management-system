@@ -26,6 +26,12 @@
             padding: 15px 20px;
         }
 
+        .button-enormous {
+            font-size: 55px;
+            line-height: 65px;
+            padding: 25px 30px;
+        }
+
         .button-facebook {
             background-color: #3B5999;
             color: #fff;
@@ -77,7 +83,7 @@
 </head>
 <body>
 <nav class="uk-navbar">
-    <a href="<?php echo $this->getUrl('index'); ?>" class="uk-navbar-brand">LOGO</a>
+    <a href="<?php echo $this->getUrl('index'); ?>" class="uk-navbar-brand">Antistatic</a>
     <div class="uk-navbar-content"><?php echo $this->getParameter('page.title'); ?></div>
     <div class="uk-navbar-flip">
         <ul class="uk-navbar-nav">

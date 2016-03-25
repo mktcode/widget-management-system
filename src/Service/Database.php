@@ -35,7 +35,8 @@ class Database
             $tool->createSchema(
                 [
                     $this->em->getClassMetadata('App\Entity\Content'),
-                    $this->em->getClassMetadata('App\Entity\ContentData')
+                    $this->em->getClassMetadata('App\Entity\ContentData'),
+                    $this->em->getClassMetadata('App\Entity\ContentCategory')
                 ]
             );
         }
