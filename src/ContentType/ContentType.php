@@ -74,6 +74,8 @@ abstract class ContentType
     /**
      * Renders the final output of the content type.
      *
+     * When overriding this method start with: $output = parent::render($contentId);
+     *
      * @param $contentId
      * @return string
      */
@@ -84,7 +86,13 @@ abstract class ContentType
             $content = $this->database->getLoader('App\Entity\Content')->load(['id' => $contentId]);
             ob_start();
             include $widgetfile;
-            return ob_get_clean();
+            $output = ob_get_clean();
+            foreach ($this->config->config as $key => $value) {
+                if (in_array($key, ['db.host', 'db.user', 'db.pass', 'db.name'])) continue;
+                $output = str_replace('%%' . $key . '%%', $value, $output);
+            }
+
+            return $output;
         }
 
         return '';
