@@ -1,6 +1,6 @@
 # This file is auto-generated during the composer install
 config:
-    page.title: 'Antistatic Html Website'
+    page.title: 'Widgetized Website'
     db.host: localhost
     db.user: mkt
     db.pass: 54600

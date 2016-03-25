@@ -83,7 +83,10 @@
 </head>
 <body>
 <nav class="uk-navbar">
-    <a href="<?php echo $this->getUrl('index'); ?>" class="uk-navbar-brand">Antistatic</a>
+    <a href="<?php echo $this->getUrl('index'); ?>" class="uk-navbar-brand">
+        <i class="uk-icon-cubes"></i>
+        HTML Widgetizer
+    </a>
     <div class="uk-navbar-content"><?php echo $this->getParameter('page.title'); ?></div>
     <div class="uk-navbar-flip">
         <ul class="uk-navbar-nav">
