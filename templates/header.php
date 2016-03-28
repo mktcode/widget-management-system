@@ -2,6 +2,7 @@
 <html>
 <head>
     <title><?php echo $this->getParameter('page.title'); ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.25.0/css/uikit.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.25.0/css/components/tooltip.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.12.0/codemirror.min.css" />
@@ -85,37 +86,38 @@
 <nav class="uk-navbar">
     <a href="<?php echo $this->getUrl('index'); ?>" class="uk-navbar-brand">
         <i class="uk-icon-cubes"></i>
-        HTML Widgetizer
+        <span class="uk-hidden-small">HTML Widgetizer</span>
     </a>
-    <div class="uk-navbar-content"><?php echo $this->getParameter('page.title'); ?></div>
     <div class="uk-navbar-flip">
         <ul class="uk-navbar-nav">
             <li>
                 <a href="<?php echo $this->getUrl('index'); ?>" data-uk-tooltip title="Inhalte">
-                    <i class="uk-icon-file-text uk-icon-medium"></i>
+                    <i class="uk-icon-file-text uk-icon-small"></i>
                 </a>
             </li>
             <li>
                 <a href="<?php echo $this->getUrl('content_types'); ?>" data-uk-tooltip title="Neuer Inhalt">
-                    <i class="uk-icon-plus uk-icon-medium"></i>
+                    <i class="uk-icon-plus uk-icon-small"></i>
                 </a>
             </li>
             <li>
                 <a href="<?php echo $this->getUrl('template'); ?>" data-uk-tooltip title="Templates">
-                    <i class="uk-icon-file-code-o uk-icon-medium"></i>
+                    <i class="uk-icon-file-code-o uk-icon-small"></i>
                 </a>
             </li>
             <li>
                 <a href="/" data-uk-tooltip title="Seite ansehen" target="_blank">
-                    <i class="uk-icon-eye uk-icon-medium"></i>
+                    <i class="uk-icon-eye uk-icon-small"></i>
                 </a>
             </li>
             <li>
                 <a href="<?php echo $this->getUrl('logout'); ?>" data-uk-tooltip title="Abmelden" class="logout">
-                    <i class="uk-icon-power-off uk-icon-medium"></i>
+                    <i class="uk-icon-power-off uk-icon-small"></i>
+                    <span class="uk-hidden-small"><?php echo $_SESSION['user']; ?></span>
                 </a>
             </li>
         </ul>
     </div>
+    <div class="uk-navbar-content uk-navbar-center uk-hidden-small"><?php echo $this->getParameter('page.title'); ?></div>
 </nav>
 <div class="uk-container uk-container-center uk-margin-large-top">

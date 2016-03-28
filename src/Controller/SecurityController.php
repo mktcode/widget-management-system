@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Yaml\Parser;
 
 class SecurityController extends Controller
 {
@@ -14,6 +15,10 @@ class SecurityController extends Controller
      */
     public function loginAction()
     {
+        // read users
+        $yaml = new Parser();
+        $users = $yaml->parse(file_get_contents(__DIR__ . '/../../config/users.yml'));
+
         // redirect to backend if logged in
         if (array_key_exists('user', $_SESSION)) {
             return new RedirectResponse($this->getUrl('index'));
@@ -24,10 +29,10 @@ class SecurityController extends Controller
             $_POST
             && array_key_exists('user', $_POST)
             && array_key_exists('pass', $_POST)
-            && $_POST['user'] == 'admin'
-            && $_POST['pass'] == 'admin'
+            && array_key_exists($_POST['user'], $users)
+            && md5($_POST['pass']) == $users[$_POST['user']]
         ) {
-            $_SESSION['user'] = true;
+            $_SESSION['user'] = $_POST['user'];
             return new RedirectResponse($this->getUrl('index'));
         }
 
