@@ -62,14 +62,14 @@ if (count($vars['categories'])) {
 if (count($vars['contents'])) {
     ?>
     <table class="uk-table uk-table-striped uk-table-hover">
-        <tr>
+        <tr class="uk-hidden-small">
             <th width="15"></th>
             <th>
                 Titel
                 <i class="uk-icon-question-circle" data-uk-tooltip
                    title="Der Titel wird im Template nicht angezeigt. Er dient nur der internen Bezeichnung von Inhalten."></i>
             </th>
-            <th class="uk-hidden-small">
+            <th>
                 Snippet
                 <i class="uk-icon-question-circle" data-uk-tooltip
                    title="Das Snippet muss im Template eingefügt werden. An dieser Stelle erscheint dann der Inhalt."></i>
@@ -90,10 +90,14 @@ if (count($vars['contents'])) {
                 }
                 ?>
             </td>
-            <td><?php echo $content->getTitle(); ?></td>
+            <td>
+                <?php echo $content->getTitle(); ?>
+                <input class="snippet-input uk-visible-small" onclick="this.select();"
+                       value="&lt;!--<?php echo $content->getHash(); ?>--&gt;"/>
+            </td>
             <td class="uk-hidden-small"><input class="snippet-input" onclick="this.select();"
-                       value="&lt;!--<?php echo $content->getHash(); ?>--&gt;"/></td>
-            <td class="uk-text-right">
+                                               value="&lt;!--<?php echo $content->getHash(); ?>--&gt;"/></td>
+            <td class="uk-text-right" width="80">
                 <a href="<?php echo $this->getUrl('content_form', ['contentTypeId' => $content->getType(), 'contentId' => $content->getId()]); ?>"
                    class="uk-button uk-button-success"><i class="uk-icon-edit"></i></a>
                 <a href="<?php echo $this->getUrl('content_delete', ['contentId' => $content->getId()]); ?>"
