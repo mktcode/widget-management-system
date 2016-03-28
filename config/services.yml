@@ -23,6 +23,10 @@ services:
         class: App\Service\Routing
         arguments: ['@request', '@request_context']
 
+    helper:
+        class: App\Service\Helper
+        arguments: ['@config', '@database', '@request', '@routing']
+
 
     #####################
     ### Content Types ###

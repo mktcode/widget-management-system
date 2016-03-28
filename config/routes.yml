@@ -22,6 +22,14 @@ content_delete:
     path:     /content/delete/{contentId}
     defaults: { _controller: 'App\Controller\ContentController::deleteAction' }
 
+content_category:
+    path:     /category/{categoryId}
+    defaults: { _controller: 'App\Controller\ContentController::indexAction', categoryId: null }
+
+content_category_form:
+    path:     /content/category/form/{categoryId}
+    defaults: { _controller: 'App\Controller\ContentController::categoryFormAction', categoryId: null }
+
 template_edit:
     path:     /template/edit/{file}
     defaults: { _controller: 'App\Controller\TemplateController::editAction' }

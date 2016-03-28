@@ -91,7 +91,7 @@ class ContentData
     }
 
     /**
-     * @return object
+     * @return Content
      */
     public function getContent()
     {
@@ -99,7 +99,7 @@ class ContentData
     }
 
     /**
-     * @param object $content
+     * @param Content $content
      * @return $this
      */
     public function setContent($content)

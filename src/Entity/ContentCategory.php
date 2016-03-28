@@ -86,9 +86,9 @@ class ContentCategory
     }
 
     /**
-     * @return Content
+     * @return ArrayCollection
      */
-    public function getContent()
+    public function getContents()
     {
         return $this->contents;
     }
@@ -116,7 +116,7 @@ class ContentCategory
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getChildren() {
         return $this->children;

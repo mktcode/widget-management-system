@@ -131,3 +131,4 @@ CodeMirror Syntax Highlighting je nach Datei
 Analytics Block
 Meta Tags
 Robots.txt
+Session Service implementieren (für flash messages etc.)

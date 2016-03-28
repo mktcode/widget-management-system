@@ -27,7 +27,7 @@ class Database
                 'host' => $config->get('db.host'),
                 'driver' => 'pdo_mysql',
             ],
-            Setup::createAnnotationMetadataConfiguration([__DIR__ . '/../Entity'], false)
+            Setup::createAnnotationMetadataConfiguration([__DIR__ . '/../Entity'], false, __DIR__ . '/../../cache/doctrine')
         );
 
         if (!$this->em->getConnection()->getSchemaManager()->listTables()) {

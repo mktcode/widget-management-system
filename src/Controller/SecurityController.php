@@ -24,8 +24,8 @@ class SecurityController extends Controller
             $_POST
             && array_key_exists('user', $_POST)
             && array_key_exists('pass', $_POST)
-            && $_POST['user'] == 'crea'
-            && $_POST['pass'] == 'creapw2015'
+            && $_POST['user'] == 'admin'
+            && $_POST['pass'] == 'admin'
         ) {
             $_SESSION['user'] = true;
             return new RedirectResponse($this->getUrl('index'));
