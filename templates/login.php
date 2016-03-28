@@ -2,6 +2,7 @@
 <html>
 <head>
     <title><?php echo $this->config['page.title']; ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.25.0/css/uikit.min.css" />
 </head>
 
