@@ -61,7 +61,7 @@ if (count($vars['categories'])) {
     <hr><?php
 if (count($vars['contents'])) {
     ?>
-    <table class="uk-table uk-text-large uk-table-striped uk-table-hover">
+    <table class="uk-table uk-table-striped uk-table-hover">
         <tr>
             <th width="15"></th>
             <th>
@@ -69,7 +69,7 @@ if (count($vars['contents'])) {
                 <i class="uk-icon-question-circle" data-uk-tooltip
                    title="Der Titel wird im Template nicht angezeigt. Er dient nur der internen Bezeichnung von Inhalten."></i>
             </th>
-            <th>
+            <th class="uk-hidden-small">
                 Snippet
                 <i class="uk-icon-question-circle" data-uk-tooltip
                    title="Das Snippet muss im Template eingefügt werden. An dieser Stelle erscheint dann der Inhalt."></i>
@@ -91,7 +91,7 @@ if (count($vars['contents'])) {
                 ?>
             </td>
             <td><?php echo $content->getTitle(); ?></td>
-            <td><input class="snippet-input" onclick="this.select();"
+            <td class="uk-hidden-small"><input class="snippet-input" onclick="this.select();"
                        value="&lt;!--<?php echo $content->getHash(); ?>--&gt;"/></td>
             <td class="uk-text-right">
                 <a href="<?php echo $this->getUrl('content_form', ['contentTypeId' => $content->getType(), 'contentId' => $content->getId()]); ?>"
