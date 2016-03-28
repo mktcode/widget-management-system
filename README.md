@@ -124,7 +124,7 @@ Neue eigene Klassen können im `<head>`-Bereich in der `templates/header.php` de
 TODO
 ----
 
-Kategorisierung von Inhalten
+Kategorisieen löschen
 Caching
 Twig Support
 CodeMirror Syntax Highlighting je nach Datei
