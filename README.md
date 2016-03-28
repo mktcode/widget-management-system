@@ -22,7 +22,7 @@ Die Einrichtung des Systems findet wie gewohnt über Git und Composer statt. Pro
     git clone git@gitlab.intern.crea.de:kotti/social-media-pages.git
     composer install
 
-Für die korrekte Funktionsweise ist nur eine simple ModRewrite-Anweisung nötig. Diese sollte nach möglichkeit direkt im Vhost eingetragen sein, um eine .htaccess-Datei im web-Verzeichnis zu vermeiden.
+Für die korrekte Funktionsweise ist nur eine simple ModRewrite-Anweisung nötig. Diese sollte nach Möglichkeit direkt im Vhost eingetragen sein, um eine .htaccess-Datei im web-Verzeichnis zu vermeiden.
 Die beiden Frontcontroller für das Backend und Frontend (`web/backend.php` und `web/frontend.php`) sollten der Übersichtlichkeit halber die einzigen beiden Dateien im Web-Verzeichnis bleiben.
 
     <VirtualHost *:80>
