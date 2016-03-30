@@ -56,7 +56,7 @@ class Frontend
     /**
      * Replaces the snippets in the html content.
      *
-     * @return string
+     * @return void
      */
     public function replaceSnippets()
     {
@@ -68,8 +68,6 @@ class Frontend
             $type = $this->services->get($content->getType());
             $this->html = str_replace('<!--' . $content->getHash() . '-->', $type->render($content->getId()), $this->html);
         }
-
-        return $this->html;
     }
 
     /**
@@ -81,12 +79,12 @@ class Frontend
     {
         $cacheFile = __DIR__ . '/../../cache/frontend' . $this->uri;
         if ($this->fs->exists($cacheFile) && filemtime($cacheFile) > time() - $this->services->get('config')->get('cache.lifetime')) {
-            $output = file_get_contents($cacheFile);
+            $this->html = file_get_contents($cacheFile);
         } else {
-            $output = $this->replaceSnippets();
-            $this->fs->dumpFile($cacheFile, $output);
+            $this->replaceSnippets();
+            $this->fs->dumpFile($cacheFile, $this->html);
         }
 
-        echo $output;
+        echo $this->html;
     }
 }

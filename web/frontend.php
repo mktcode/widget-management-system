@@ -14,6 +14,7 @@ $loader = new YamlFileLoader($services, new FileLocator(__DIR__));
 $loader->load('../config/services.yml');
 $services->compile();
 
+// output
 $frontend = $services->get('frontend');
 $frontend->init($_SERVER["REQUEST_URI"], $services);
 $frontend->output();
