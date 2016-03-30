@@ -1,40 +1,44 @@
 login:
-    path:     /login
+    path: /login
     defaults: { _controller: 'App\Controller\SecurityController::loginAction' }
 
 logout:
-    path:     /logout
+    path: /logout
     defaults: { _controller: 'App\Controller\SecurityController::logoutAction' }
 
 index:
-    path:     /
+    path: /
     defaults: { _controller: 'App\Controller\ContentController::indexAction' }
 
 content_types:
-    path:     /content/types
+    path: /content/types
     defaults: { _controller: 'App\Controller\ContentController::contentTypesAction' }
 
 content_form:
-    path:     /content/form/{contentTypeId}/{contentId}
+    path: /content/form/{contentTypeId}/{contentId}
     defaults: { _controller: 'App\Controller\ContentController::formAction', contentId: null }
 
 content_delete:
-    path:     /content/delete/{contentId}
+    path: /content/delete/{contentId}
     defaults: { _controller: 'App\Controller\ContentController::deleteAction' }
 
 content_category:
-    path:     /category/{categoryId}
+    path: /category/{categoryId}
     defaults: { _controller: 'App\Controller\ContentController::indexAction', categoryId: null }
 
 content_category_form:
-    path:     /content/category/form/{categoryId}
+    path: /content/category/form/{categoryId}
     defaults: { _controller: 'App\Controller\ContentController::categoryFormAction', categoryId: null }
 
 template_edit:
-    path:     /template/edit/{file}
+    path: /template/edit/{file}
     defaults: { _controller: 'App\Controller\TemplateController::editAction' }
     requirements:
         file: .+
+
+template_clearcache:
+    path: /template/clearcache
+    defaults: { _controller: 'App\Controller\TemplateController::clearCacheAction' }
 
 template:
     path:     /template/{dir}

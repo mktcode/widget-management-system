@@ -27,6 +27,9 @@ services:
         class: App\Service\Helper
         arguments: ['@config', '@database', '@request', '@routing']
 
+    frontend:
+        class: App\Service\Frontend
+
 
     #####################
     ### Content Types ###

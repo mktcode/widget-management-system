@@ -5,3 +5,4 @@ config:
     db.user: mkt
     db.pass: 54600
     db.name: notsostatic
+    cache.lifetime: 3600

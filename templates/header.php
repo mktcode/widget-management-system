@@ -106,6 +106,11 @@
                 </a>
             </li>
             <li>
+                <a href="<?php echo $this->getUrl('template_clearcache'); ?>" data-uk-tooltip title="Cache löschen">
+                    <i class="uk-icon-refresh uk-icon-small"></i>
+                </a>
+            </li>
+            <li>
                 <a href="/" data-uk-tooltip title="Seite ansehen" target="_blank">
                     <i class="uk-icon-eye uk-icon-small"></i>
                 </a>

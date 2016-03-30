@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class TemplateController extends Controller
@@ -54,5 +55,22 @@ class TemplateController extends Controller
 
         $content = file_get_contents(__DIR__ . '/../../web/' . $file);
         return $this->render(['file' => $file, 'content' => $content]);
+    }
+
+    /**
+     * Clears the cache.
+     *
+     * @return RedirectResponse
+     */
+    public function clearCacheAction()
+    {
+        $fs = new Filesystem();
+        $fs->remove(glob(__DIR__ . '/../../cache/frontend/*'));
+
+        if ($_SERVER['HTTP_REFERER']) {
+            return new RedirectResponse($_SERVER['HTTP_REFERER']);
+        }
+
+        return new RedirectResponse('/');
     }
 }
