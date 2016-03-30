@@ -125,7 +125,6 @@ TODO
 ----
 
 Kategorisieen löschen
-Caching
 Twig Support
 CodeMirror Syntax Highlighting je nach Datei
 Analytics Block
