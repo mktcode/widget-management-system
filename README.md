@@ -1,4 +1,4 @@
-Social Media Pages
+HTML Widgetizer
 ==================
 
 Ein einfaches Tool um statische HTML-Templates mit dynamischen Widgets zu bestücken.
@@ -19,6 +19,7 @@ Einrichtung
 
 Die Einrichtung des Systems findet wie gewohnt über Git und Composer statt. Pro Website ist eine Installation nötig.
     
+    cd httpdocs
     git clone http://gitlab.intern.crea.de:19007/kotti/html-widgetizer.git
     composer install
 
