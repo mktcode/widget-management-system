@@ -20,7 +20,7 @@ Einrichtung
 Die Einrichtung des Systems findet wie gewohnt über Git und Composer statt. Pro Website ist eine Installation nötig.
     
     cd httpdocs
-    git clone http://gitlab.intern.crea.de:19007/kotti/html-widgetizer.git
+    git clone http://gitlab.intern.crea.de:19007/kotti/html-widgetizer.git .
     composer install
 
 Für die korrekte Funktionsweise ist nur eine simple ModRewrite-Anweisung nötig. Diese sollte nach Möglichkeit direkt im Vhost eingetragen sein, um eine .htaccess-Datei im web-Verzeichnis zu vermeiden.
