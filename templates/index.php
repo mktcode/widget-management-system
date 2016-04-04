@@ -10,7 +10,10 @@ include 'header.php';
         echo ' uk-margin-large-top';
     } ?>">
         <a href="<?php echo $this->getUrl('content_types'); ?>"
-           class="uk-button uk-button-success uk-button-large button-huge<?php if (!count($vars['contents']) && !$vars['category']) {
+           class="uk-button uk-button-success uk-button-large button-huge<?php if (!count(
+                   $vars['contents']
+               ) && !$vars['category']
+           ) {
                echo ' button-enormous';
            } ?> uk-width-1-1">
             <i class="uk-icon-plus"></i>
@@ -19,15 +22,21 @@ include 'header.php';
     </div>
     <div class="uk-text-center">
         <a href="<?php echo $this->getUrl('content_category_form'); ?>"
-           class="uk-button uk-button-success uk-button-large<?php if (!count($vars['contents']) && !$vars['category']) {
+           class="uk-button uk-button-success uk-button-large<?php if (!count(
+                   $vars['contents']
+               ) && !$vars['category']
+           ) {
                echo ' button-huge';
            } ?> uk-margin-top uk-width-1-1">
             <i class="uk-icon-plus"></i>
             Neue Kategorie
         </a>
     </div>
-    <hr class="uk-margin-large-top">
 <?php
+if (count($vars['categories']) || $vars['category']) {
+    ?>
+    <hr class="uk-margin-top"><?php
+}
 if ($vars['category']) {
     $parentUrl = $vars['category']->getParent()
         ? $this->getUrl('content_category', ['categoryId' => $vars['category']->getParent()->getId()])
@@ -38,9 +47,11 @@ if ($vars['category']) {
     </a>
     <?php echo $vars['category']->getName(); ?>
     <a href="<?php echo $this->getUrl('content_category_form', ['categoryId' => $vars['category']->getId()]); ?>"
-       class="uk-button uk-button-success"><i class="uk-icon-edit"></i></a>
+       class="uk-button uk-button-success">
+        <i class="uk-icon-edit"></i>
+    </a>
     </h2>
-    <?php
+<?php
 }
 
 if (count($vars['categories'])) {
@@ -55,10 +66,10 @@ if (count($vars['categories'])) {
         </span>
         </a> <?php
     }
-
-}
-?>
+    ?>
     <hr><?php
+}
+
 if (count($vars['contents'])) {
     ?>
     <table class="uk-table uk-table-striped uk-table-hover">
@@ -98,7 +109,10 @@ if (count($vars['contents'])) {
             <td class="uk-hidden-small"><input class="snippet-input" onclick="this.select();"
                                                value="&lt;!--<?php echo $content->getHash(); ?>--&gt;"/></td>
             <td class="uk-text-right" width="80">
-                <a href="<?php echo $this->getUrl('content_form', ['contentTypeId' => $content->getType(), 'contentId' => $content->getId()]); ?>"
+                <a href="<?php echo $this->getUrl(
+                    'content_form',
+                    ['contentTypeId' => $content->getType(), 'contentId' => $content->getId()]
+                ); ?>"
                    class="uk-button uk-button-success"><i class="uk-icon-edit"></i></a>
                 <a href="<?php echo $this->getUrl('content_delete', ['contentId' => $content->getId()]); ?>"
                    class="open-delete-modal uk-button uk-button-danger"><i class="uk-icon-trash"></i></a>
