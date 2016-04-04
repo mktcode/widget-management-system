@@ -59,4 +59,20 @@ class Helper
 
         return $count;
     }
+
+    /**
+     * @param ContentCategory $category
+     * @param string $delimiter
+     * @return string
+     */
+    public function getCategoryPath(ContentCategory $category, $delimiter = '<i class="uk-icon-angle-right"></i>')
+    {
+        $name = $category->getName();
+        while ($category->getParent()) {
+            $category = $category->getParent();
+            $name = '<span class="uk-text-muted">' . $category->getName() . ' ' . $delimiter . '</span> ' . $name;
+        }
+
+        return $name;
+    }
 }

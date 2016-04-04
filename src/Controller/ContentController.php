@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Content;
 use App\Entity\ContentCategory;
+use App\Entity\ContentData;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ContentController extends Controller
@@ -109,11 +110,14 @@ class ContentController extends Controller
      */
     public function deleteAction($contentId)
     {
+        /** @var Content $content */
         $content = $this->getEntityLoader('App\Entity\Content')->loadById(['id' => $contentId]);
-        $contentData = $this->getEntityLoader('App\Entity\ContentData')->loadAll(['content' => $contentId]);
-        foreach ($contentData as $data) {
-            $this->getEntityManager()->remove($data);
+
+        /** @var ContentData $ContentData */
+        foreach ($content->getContentData() as $ContentData) {
+            $this->getEntityManager()->remove($ContentData);
         }
+
         $this->getEntityManager()->remove($content);
         $this->getEntityManager()->flush();
 
@@ -167,5 +171,43 @@ class ContentController extends Controller
             'categories' => $categories,
             'message' => $message
         ]);
+    }
+
+    /**
+     * @param $categoryId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function categoryDeleteAction($categoryId)
+    {
+        $this->deleteCategoriesRecursive($categoryId);
+
+        return new RedirectResponse($this->getUrl('index'));
+    }
+
+    private function deleteCategoriesRecursive($categoryId)
+    {
+        /** @var ContentCategory $category */
+        $category = $this->getEntityLoader('App\Entity\ContentCategory')->loadById(['id' => $categoryId]);
+        $contents = $category->getContents();
+        $subCategories = $category->getChildren();
+
+        /** @var Content $content */
+        foreach ($contents as $content) {
+            $contentData = $this->getEntityLoader('App\Entity\ContentData')->loadAll(['content' => $content->getId()]);
+            foreach ($contentData as $data) {
+                $this->getEntityManager()->remove($data);
+            }
+            $this->getEntityManager()->remove($content);
+        }
+
+        /** @var ContentCategory $subCategory */
+        foreach ($subCategories as $subCategory) {
+            $this->deleteCategoriesRecursive($subCategory->getId());
+            $this->getEntityManager()->remove($subCategory);
+        }
+
+        $this->getEntityManager()->remove($category);
+
+        $this->getEntityManager()->flush();
     }
 }

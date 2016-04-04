@@ -10,24 +10,14 @@ include 'header.php';
         echo ' uk-margin-large-top';
     } ?>">
         <a href="<?php echo $this->getUrl('content_types'); ?>"
-           class="uk-button uk-button-success uk-button-large button-huge<?php if (!count(
-                   $vars['contents']
-               ) && !$vars['category']
-           ) {
-               echo ' button-enormous';
-           } ?> uk-width-1-1">
+           class="uk-button uk-button-success uk-button-large button-huge<?php echo !count($vars['contents']) && !$vars['category'] && !$vars['categories'] ? ' button-enormous' : ''; ?> uk-width-1-1">
             <i class="uk-icon-plus"></i>
             Neuer Inhalt
         </a>
     </div>
     <div class="uk-text-center">
         <a href="<?php echo $this->getUrl('content_category_form'); ?>"
-           class="uk-button uk-button-success uk-button-large<?php if (!count(
-                   $vars['contents']
-               ) && !$vars['category']
-           ) {
-               echo ' button-huge';
-           } ?> uk-margin-top uk-width-1-1">
+           class="uk-button uk-button-success uk-button-large<?php echo !count($vars['contents']) && !$vars['category'] && !$vars['categories'] ? ' button-enormous' : ''; ?> uk-margin-top uk-width-1-1">
             <i class="uk-icon-plus"></i>
             Neue Kategorie
         </a>
@@ -45,10 +35,15 @@ if ($vars['category']) {
     <a href="<?php echo $parentUrl; ?>" class="uk-button">
         <i class="uk-icon-angle-double-left"></i>
     </a>
-    <?php echo $vars['category']->getName(); ?>
+    <?php echo $this->getService('helper')->getCategoryPath($vars['category']); ?>
     <a href="<?php echo $this->getUrl('content_category_form', ['categoryId' => $vars['category']->getId()]); ?>"
        class="uk-button uk-button-success">
         <i class="uk-icon-edit"></i>
+    </a>
+    <a href="#delete-category-modal"
+       class="uk-button uk-button-danger"
+       data-uk-modal>
+        <i class="uk-icon-trash"></i>
     </a>
     </h2>
 <?php
@@ -144,6 +139,38 @@ if (count($vars['contents'])) {
     </div><?php
 }
 ?>
+
+    <div id="delete-category-modal" class="uk-modal">
+        <div class="uk-modal-dialog">
+            <a class="uk-modal-close uk-close"></a>
+
+            <div class="uk-modal-header">
+                <h2><i class="uk-icon-trash-o"></i> Löschen bestätigen</h2>
+            </div>
+            Möchten Sie diese Kategorie wirklich löschen?
+            <?php
+            $contentsCount = $this->getService('helper')->getRecursiveCategoryContentCount($vars['category']);
+            if ($contentsCount) {
+                echo '<br><br>Inhalte in dieser Kategorie: <b>' . $contentsCount . '</b> (Einschließlich Unterkategorien).';
+            }
+            ?>
+            <br><br><b class="uk-text-danger">Es werden alle Inhalte, Unterkategorien und deren Inhalte gelöscht!</b>
+
+            <div class="uk-modal-footer">
+                <a href="#" class="uk-button uk-button-danger uk-modal-close">
+                    <i class="uk-icon-times"></i>
+                    Nein!
+                </a>
+                <a href="<?php echo $this->getUrl(
+                    'content_category_delete',
+                    ['categoryId' => $vars['category']->getId()]
+                ); ?>" class="uk-button uk-button-success uk-float-right">
+                    <i class="uk-icon-check"></i>
+                    Ja, jetzt löschen!
+                </a>
+            </div>
+        </div>
+    </div>
 
     <script>
         $(function () {

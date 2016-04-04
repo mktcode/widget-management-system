@@ -102,7 +102,7 @@ class ContentCategory
     }
 
     /**
-     * @return mixed
+     * @return ContentCategory|null
      */
     public function getParent() {
         return $this->parent;
