@@ -1,8 +1,8 @@
 # This file is auto-generated during the composer install
 config:
-    page.title: 'Widgetized Website'
+    page.title: 'HTML Widgetizer'
     db.host: localhost
     db.user: mkt
     db.pass: 54600
-    db.name: notsostatic
-    cache.lifetime: 3600
+    db.name: html_widgetizer
+    cache.lifetime: 360
