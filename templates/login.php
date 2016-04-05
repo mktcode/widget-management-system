@@ -31,14 +31,12 @@
         <?php echo $this->getParameter('backend.title'); ?>
     </h1>
 
-    <?php
-    if ($vars['message']) {
-        echo $vars['message'];
-    }
-    ?>
-
     <form class="uk-panel uk-panel-box uk-form" method="post">
-        <h2>Anmelden</h2>
+        <?php
+        if ($vars['message']) {
+            echo $vars['message'];
+        }
+        ?>
         <div class="uk-form-row uk-text-left">
             <small>Benutzer:</small><br>
             <input class="uk-width-1-1 uk-form-large" type="text" placeholder="Benutzername" name="user"
