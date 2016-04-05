@@ -18,6 +18,7 @@ class SecurityController extends Controller
         // read users
         $yaml = new Parser();
         $users = $yaml->parse(file_get_contents(__DIR__ . '/../../config/users.yml'));
+        $message = '';
 
         // redirect to backend if logged in
         if (array_key_exists('user', $_SESSION)) {
@@ -25,19 +26,22 @@ class SecurityController extends Controller
         }
 
         // check login and redirect if successful
-        if (
-            $_POST
-            && array_key_exists('user', $_POST)
-            && array_key_exists('pass', $_POST)
-            && array_key_exists($_POST['user'], $users)
-            && md5($_POST['pass']) == $users[$_POST['user']]['password']
-        ) {
-            $_SESSION['user'] = $users[$_POST['user']];
-            $_SESSION['user']['username'] = $_POST['user'];
-            return new RedirectResponse($this->getUrl('index'));
+        if ($_POST) {
+            if (
+                array_key_exists('user', $_POST)
+                && array_key_exists('pass', $_POST)
+                && array_key_exists($_POST['user'], $users)
+                && md5($_POST['pass']) == $users[$_POST['user']]['password']
+            ) {
+                $_SESSION['user'] = $users[$_POST['user']];
+                $_SESSION['user']['username'] = $_POST['user'];
+                return new RedirectResponse($this->getUrl('index'));
+            }
+
+            $message = '<div class="uk-alert uk-alert-danger"><i class="uk-icon-warning"></i> Login fehlgeschlagen!</div>';
         }
 
-        return $this->render();
+        return $this->render(['message' => $message]);
     }
 
     /**
