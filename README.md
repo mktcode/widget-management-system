@@ -135,3 +135,5 @@ Session Service implementieren (für flash messages etc.)
 Users from Datebase
 Admin- und Redakteurs-Rechte
 i18n
+Cache automatisch löschen bei Änderungen
+Dokumentation vervollständigen
