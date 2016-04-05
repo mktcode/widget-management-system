@@ -23,7 +23,7 @@ if ($this->isAdmin()) {
         <a href="<?php echo $this->getUrl('content_category_form'); ?>"
            class="uk-button uk-button-success uk-button-large<?php echo !count(
                $vars['contents']
-           ) && !$vars['category'] && !$vars['categories'] ? ' button-enormous' : ''; ?> uk-margin-top uk-width-1-1">
+           ) && !$vars['category'] && !$vars['categories'] ? ' button-huge' : ''; ?> uk-margin-top uk-width-1-1">
             <i class="uk-icon-plus"></i>
             Neue Kategorie
         </a>
