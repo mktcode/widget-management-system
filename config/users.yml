@@ -3,5 +3,5 @@ admin:
     role: admin
 
 editor:
-    password: 5aee9dbd2a188839105073571bee1b1fZ
+    password: 5aee9dbd2a188839105073571bee1b1f
     role: editor

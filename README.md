@@ -134,3 +134,4 @@ Robots.txt
 Session Service implementieren (für flash messages etc.)
 Users from Datebase
 Admin- und Redakteurs-Rechte
+i18n

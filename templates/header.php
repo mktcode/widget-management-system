@@ -95,16 +95,20 @@
                     <i class="uk-icon-file-text uk-icon-small"></i>
                 </a>
             </li>
-            <li>
+            <?php
+            if ($this->isAdmin()) {
+                ?><li>
                 <a href="<?php echo $this->getUrl('content_types'); ?>" data-uk-tooltip title="Neuer Inhalt">
                     <i class="uk-icon-plus uk-icon-small"></i>
                 </a>
-            </li>
-            <li>
+                </li>
+                <li>
                 <a href="<?php echo $this->getUrl('template'); ?>" data-uk-tooltip title="Templates">
                     <i class="uk-icon-file-code-o uk-icon-small"></i>
                 </a>
-            </li>
+                </li><?php
+            }
+            ?>
             <li>
                 <a href="<?php echo $this->getUrl('template_clearcache'); ?>" data-uk-tooltip title="Cache löschen">
                     <i class="uk-icon-refresh uk-icon-small"></i>
@@ -125,4 +129,4 @@
     </div>
     <div class="uk-navbar-content uk-navbar-center uk-hidden-small"><?php echo $this->getParameter('page.title'); ?></div>
 </nav>
-<div class="uk-container uk-container-center uk-margin-large-top">
+<div class="uk-container uk-container-center uk-margin-top">

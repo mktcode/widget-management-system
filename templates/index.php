@@ -5,28 +5,37 @@ use App\Entity\Content;
 use App\Entity\ContentCategory;
 
 include 'header.php';
-?>
+
+if ($this->isAdmin()) {
+    ?>
     <div class="uk-text-center <?php if (!count($vars['contents'])) {
         echo ' uk-margin-large-top';
     } ?>">
         <a href="<?php echo $this->getUrl('content_types'); ?>"
-           class="uk-button uk-button-success uk-button-large button-huge<?php echo !count($vars['contents']) && !$vars['category'] && !$vars['categories'] ? ' button-enormous' : ''; ?> uk-width-1-1">
+           class="uk-button uk-button-success uk-button-large button-huge<?php echo !count(
+               $vars['contents']
+           ) && !$vars['category'] && !$vars['categories'] ? ' button-enormous' : ''; ?> uk-width-1-1">
             <i class="uk-icon-plus"></i>
             Neuer Inhalt
         </a>
     </div>
     <div class="uk-text-center">
         <a href="<?php echo $this->getUrl('content_category_form'); ?>"
-           class="uk-button uk-button-success uk-button-large<?php echo !count($vars['contents']) && !$vars['category'] && !$vars['categories'] ? ' button-enormous' : ''; ?> uk-margin-top uk-width-1-1">
+           class="uk-button uk-button-success uk-button-large<?php echo !count(
+               $vars['contents']
+           ) && !$vars['category'] && !$vars['categories'] ? ' button-enormous' : ''; ?> uk-margin-top uk-width-1-1">
             <i class="uk-icon-plus"></i>
             Neue Kategorie
         </a>
     </div>
 <?php
+}
+
 if (count($vars['categories']) || $vars['category']) {
     ?>
     <hr class="uk-margin-top"><?php
 }
+
 if ($vars['category']) {
     $parentUrl = $vars['category']->getParent()
         ? $this->getUrl('content_category', ['categoryId' => $vars['category']->getParent()->getId()])
@@ -36,15 +45,19 @@ if ($vars['category']) {
         <i class="uk-icon-angle-double-left"></i>
     </a>
     <?php echo $this->getService('helper')->getCategoryPath($vars['category']); ?>
-    <a href="<?php echo $this->getUrl('content_category_form', ['categoryId' => $vars['category']->getId()]); ?>"
-       class="uk-button uk-button-success">
-        <i class="uk-icon-edit"></i>
-    </a>
-    <a href="#delete-category-modal"
-       class="uk-button uk-button-danger"
-       data-uk-modal>
-        <i class="uk-icon-trash"></i>
-    </a>
+    <?php
+    if ($this->isAdmin()) {
+        ?><a href="<?php echo $this->getUrl('content_category_form', ['categoryId' => $vars['category']->getId()]); ?>"
+             class="uk-button uk-button-success">
+            <i class="uk-icon-edit"></i>
+        </a>
+        <a href="#delete-category-modal"
+           class="uk-button uk-button-danger"
+           data-uk-modal>
+            <i class="uk-icon-trash"></i>
+        </a><?php
+    }
+    ?>
     </h2>
 <?php
 }
@@ -75,11 +88,16 @@ if (count($vars['contents'])) {
                 <i class="uk-icon-question-circle" data-uk-tooltip
                    title="Der Titel wird im Template nicht angezeigt. Er dient nur der internen Bezeichnung von Inhalten."></i>
             </th>
-            <th>
-                Snippet
-                <i class="uk-icon-question-circle" data-uk-tooltip
-                   title="Das Snippet muss im Template eingefügt werden. An dieser Stelle erscheint dann der Inhalt."></i>
-            </th>
+            <?php
+            if ($this->isAdmin()) {
+                ?>
+                <th>
+                    Snippet
+                    <i class="uk-icon-question-circle" data-uk-tooltip
+                       title="Das Snippet muss im Template eingefügt werden. An dieser Stelle erscheint dann der Inhalt."></i>
+                </th><?php
+            }
+            ?>
             <th></th>
         </tr>
         <?php
@@ -101,16 +119,27 @@ if (count($vars['contents'])) {
                 <input class="snippet-input uk-visible-small" onclick="this.select();"
                        value="&lt;!--<?php echo $content->getHash(); ?>--&gt;"/>
             </td>
-            <td class="uk-hidden-small"><input class="snippet-input" onclick="this.select();"
-                                               value="&lt;!--<?php echo $content->getHash(); ?>--&gt;"/></td>
+            <?php
+            if ($this->isAdmin()) {
+                ?>
+                <td class="uk-hidden-small">
+                <input class="snippet-input" onclick="this.select();"
+                       value="&lt;!--<?php echo $content->getHash(); ?>--&gt;"/>
+                </td><?php
+            }
+            ?>
             <td class="uk-text-right" width="80">
                 <a href="<?php echo $this->getUrl(
                     'content_form',
                     ['contentTypeId' => $content->getType(), 'contentId' => $content->getId()]
                 ); ?>"
                    class="uk-button uk-button-success"><i class="uk-icon-edit"></i></a>
-                <a href="<?php echo $this->getUrl('content_delete', ['contentId' => $content->getId()]); ?>"
-                   class="open-delete-modal uk-button uk-button-danger"><i class="uk-icon-trash"></i></a>
+                <?php
+                if ($this->isAdmin()) {
+                    ?><a href="<?php echo $this->getUrl('content_delete', ['contentId' => $content->getId()]); ?>"
+                         class="open-delete-modal uk-button uk-button-danger"><i class="uk-icon-trash"></i></a><?php
+                }
+                ?>
             </td>
             </tr><?php
         }

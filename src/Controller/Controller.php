@@ -110,6 +110,16 @@ class Controller implements ContainerAwareInterface
     }
 
     /**
+     * Checks the users role.
+     *
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $_SESSION['user']['role'] == 'admin';
+    }
+
+    /**
      * Renders a template file based on the current route name.
      *
      * @param array $vars
