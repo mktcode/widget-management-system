@@ -63,7 +63,6 @@ class ContentController extends Controller
 
         if ($_POST) {
             // save content entity
-            $redirect = false;
             if (!$content) {
                 // create new content entity
                 $content = new Content();
@@ -72,8 +71,6 @@ class ContentController extends Controller
                 $content->setType($contentTypeId);
                 $content->setHash(md5(time() . uniqid()));
                 $content->setActive(1);
-
-                $redirect = true;
             }
             if ((int)$_POST['category']) {
                 /** @var ContentCategory $category */
@@ -87,14 +84,12 @@ class ContentController extends Controller
             // call type specific save method
             $contentType->save($content->getId(), $_POST);
 
-            if ($redirect) {
-                return new RedirectResponse($this->getUrl('content_form', [
-                    'contentTypeId' => $contentTypeId,
-                    'contentId' => $content->getId()
-                ]));
-            }
+            $this->getSession()->getFlashBag()->add('success', 'Inhalt gespeichert!');
 
-            $message = '<i class="uk-icon-check"></i> Inhalt gespeichert!';
+            return new RedirectResponse($this->getUrl('content_form', [
+                'contentTypeId' => $contentTypeId,
+                'contentId' => $content->getId()
+            ]));
         }
 
         return $this->render([
@@ -123,6 +118,8 @@ class ContentController extends Controller
 
         $this->getEntityManager()->remove($content);
         $this->getEntityManager()->flush();
+
+        $this->getSession()->getFlashBag()->add('success', 'Inhalt gelöscht!');
 
         return new RedirectResponse($this->getUrl('index'));
     }
@@ -162,13 +159,10 @@ class ContentController extends Controller
         }
 
         if ($_POST) {
-            $redirect = false;
             // save content entity
             if (!$category) {
                 $category = new ContentCategory();
                 $this->getEntityManager()->persist($category);
-
-                $redirect = true;
             }
             $category->setName(trim($_POST['name']));
             /** @var ContentCategory $parent */
@@ -179,11 +173,9 @@ class ContentController extends Controller
 
             $this->getEntityManager()->flush();
 
-            if ($redirect) {
-                return new RedirectResponse($this->getUrl('content_category_form', ['categoryId' => $category->getId()]));
-            }
+            $this->getSession()->getFlashBag()->add('success', 'Kategorie gespeichert!');
 
-            $message = '<i class="uk-icon-check"></i> Kategorie gespeichert!';
+            return new RedirectResponse($this->getUrl('content_category_form', ['categoryId' => $category->getId()]));
         }
 
         return $this->render([
@@ -201,6 +193,8 @@ class ContentController extends Controller
     public function categoryDeleteAction($categoryId)
     {
         $this->deleteCategoriesRecursive($categoryId);
+
+        $this->getSession()->getFlashBag()->add('success', 'Kategorie gelöscht!');
 
         return new RedirectResponse($this->getUrl('index'));
     }

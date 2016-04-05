@@ -10,6 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class Controller implements ContainerAwareInterface
 {
@@ -48,6 +49,14 @@ class Controller implements ContainerAwareInterface
     public function getContentType($contentTypeId)
     {
         return $this->getService($contentTypeId);
+    }
+
+    /**
+     * @return Session
+     */
+    public function getSession()
+    {
+        return $this->getService('session');
     }
 
     /**

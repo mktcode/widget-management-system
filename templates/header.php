@@ -3,9 +3,9 @@
 <head>
     <title><?php echo $this->getParameter('page.title'); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.25.0/css/uikit.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.25.0/css/components/tooltip.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.12.0/codemirror.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.25.0/css/uikit.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.25.0/css/components/tooltip.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.12.0/codemirror.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.25.0/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.25.0/js/components/tooltip.min.js"></script>
@@ -99,6 +99,7 @@
         <i class="uk-icon-cubes"></i>
         <span class="uk-hidden-small"><?php echo $this->getParameter('backend.title'); ?></span>
     </a>
+
     <div class="uk-navbar-flip">
         <ul class="uk-navbar-nav">
             <li>
@@ -108,10 +109,11 @@
             </li>
             <?php
             if ($this->isAdmin()) {
-                ?><li>
-                <a href="<?php echo $this->getUrl('content_types'); ?>" data-uk-tooltip title="Neuer Inhalt">
-                    <i class="uk-icon-plus uk-icon-small"></i>
-                </a>
+                ?>
+                <li>
+                    <a href="<?php echo $this->getUrl('content_types'); ?>" data-uk-tooltip title="Neuer Inhalt">
+                        <i class="uk-icon-plus uk-icon-small"></i>
+                    </a>
                 </li>
                 <li>
                 <a href="<?php echo $this->getUrl('template'); ?>" data-uk-tooltip title="Templates">
@@ -138,6 +140,30 @@
             </li>
         </ul>
     </div>
-    <div class="uk-navbar-content uk-navbar-center uk-hidden-small"><?php echo $this->getParameter('page.title'); ?></div>
+    <div class="uk-navbar-content uk-navbar-center uk-hidden-small"><?php echo $this->getParameter(
+            'page.title'
+        ); ?></div>
 </nav>
 <div class="uk-container uk-container-center uk-margin-top">
+<?php
+foreach ($this->getSession()->getFlashbag()->get('success') as $message) {
+    echo '<div class="uk-alert uk-alert-success" data-uk-alert>
+            <a href="" class="uk-alert-close uk-close"></a>
+
+            <p>
+                <i class="uk-icon-check"></i>
+                ' . $message . '
+            </p>
+        </div>';
+}
+
+foreach ($this->getSession()->getFlashbag()->get('error') as $message) {
+    echo '<div class="uk-alert uk-alert-danger" data-uk-alert>
+        <a href="" class="uk-alert-close uk-close"></a>
+
+        <p>
+            <i class="uk-icon-warning"></i>
+            ' . $message . '
+        </p>
+    </div>';
+}

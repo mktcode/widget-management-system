@@ -20,17 +20,6 @@ $categories = $vars['categories'];
         ?>
     </h1>
 
-<?php
-if ($vars['message']) {
-    ?>
-    <div class="uk-alert" data-uk-alert>
-    <a href="" class="uk-alert-close uk-close"></a>
-
-    <p><?php echo $vars['message']; ?></p>
-    </div><?php
-}
-?>
-
     <form action="" method="post" class="uk-form">
         <label class="uk-margin-bottom uk-display-block">
             <input type="text" name="title" class="uk-form-large uk-width-1-1"

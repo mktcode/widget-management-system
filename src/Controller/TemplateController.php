@@ -51,6 +51,8 @@ class TemplateController extends Controller
         if ($_POST) {
             $fs = new Filesystem();
             $fs->dumpFile(__DIR__ . '/../../web/' . $file, $_POST['file']);
+
+            $this->getSession()->getFlashBag()->add('success', 'Template gespeichert!');
         }
 
         $content = file_get_contents(__DIR__ . '/../../web/' . $file);
@@ -66,6 +68,8 @@ class TemplateController extends Controller
     {
         $fs = new Filesystem();
         $fs->remove(glob(__DIR__ . '/../../cache/frontend/*'));
+
+        $this->getSession()->getFlashBag()->add('success', 'Cache gelöscht!');
 
         if ($_SERVER['HTTP_REFERER']) {
             return new RedirectResponse($_SERVER['HTTP_REFERER']);

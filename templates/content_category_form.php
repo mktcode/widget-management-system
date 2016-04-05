@@ -12,17 +12,6 @@ $categories = $vars['categories'];
         Kategorie
     </h1>
 
-<?php
-if ($vars['message']) {
-    ?>
-    <div class="uk-alert" data-uk-alert>
-    <a href="" class="uk-alert-close uk-close"></a>
-
-    <p><?php echo $vars['message']; ?></p>
-    </div><?php
-}
-?>
-
     <form action="" method="post" class="uk-form">
         <label class="uk-margin-bottom uk-display-block">
             <input type="text" name="name" class="uk-form-large uk-width-1-1"
@@ -42,7 +31,11 @@ if ($vars['message']) {
                 <?php
                 /** @var ContentCategory $cat */
                 foreach ($categories as $cat) {
-                    if ($category && ($cat->getId() == $category->getId() || ($cat->getParent() && $cat->getParent()->getId() != $category->getId()))) continue;
+                    if ($category && ($cat->getId() == $category->getId() || ($cat->getParent() && $cat->getParent(
+                                )->getId() != $category->getId()))
+                    ) {
+                        continue;
+                    }
                     $selected = $category && $category->getParent() && $cat->getId() == $category->getParent()->getId();
                     ?>
                     <option value="<?php echo $cat->getId(); ?>"<?php if ($selected) {

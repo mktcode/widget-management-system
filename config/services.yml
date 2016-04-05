@@ -4,13 +4,6 @@ services:
     ### Core ###
     ############
 
-    config:
-        class: App\Service\Config
-
-    database:
-        class: App\Service\Database
-        arguments: ['@config']
-
     request:
         class: Symfony\Component\HttpFoundation\Request
         factory: [Symfony\Component\HttpFoundation\Request, createFromGlobals]
@@ -18,6 +11,16 @@ services:
     request_context:
         class: Symfony\Component\Routing\RequestContext
         calls: [[fromRequest, ['@request']]]
+
+    session:
+        class: Symfony\Component\HttpFoundation\Session\Session
+
+    config:
+        class: App\Service\Config
+
+    database:
+        class: App\Service\Database
+        arguments: ['@config']
 
     routing:
         class: App\Service\Routing
