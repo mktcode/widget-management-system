@@ -8,7 +8,7 @@ include 'header.php';
 
 if ($this->isAdmin()) {
     ?>
-    <div class="uk-text-center <?php if (!count($vars['contents'])) {
+    <div class="uk-text-center <?php if (!count($vars['contents']) && !count($vars['categories'])) {
         echo ' uk-margin-large-top';
     } ?>">
         <a href="<?php echo $this->getUrl('content_types'); ?>"
