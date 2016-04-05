@@ -1,7 +1,10 @@
 config:
-    page.title: Antistatic Html Website
+    page.title: 'Widgetized Website'
+    backend.title: 'HTML Widgetizer'
+    backend.bg: '#7bb03b'
+    backend.color: '#fff'
     db.host: localhost
     db.user: root
     db.pass: root
-    db.name: notsostatic
-    cache.lifetime: 360
+    db.name: htmlwidgetizer
+    cache.lifetime: 3600

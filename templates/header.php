@@ -80,13 +80,24 @@
             border: 1px solid #eee;
             height: auto;
         }
+
+        .uk-navbar {
+            background-color: <?php echo $this->getParameter('backend.bg'); ?>;
+        }
+
+        .uk-navbar,
+        .uk-navbar-brand,
+        .uk-navbar-brand:hover,
+        .uk-navbar-nav > li > a {
+            color: <?php echo $this->getParameter('backend.color'); ?>;
+        }
     </style>
 </head>
 <body>
 <nav class="uk-navbar">
     <a href="<?php echo $this->getUrl('index'); ?>" class="uk-navbar-brand">
         <i class="uk-icon-cubes"></i>
-        <span class="uk-hidden-small">HTML Widgetizer</span>
+        <span class="uk-hidden-small"><?php echo $this->getParameter('backend.title'); ?></span>
     </a>
     <div class="uk-navbar-flip">
         <ul class="uk-navbar-nav">
