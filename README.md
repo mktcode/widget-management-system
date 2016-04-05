@@ -125,11 +125,12 @@ Neue eigene Klassen können im `<head>`-Bereich in der `templates/header.php` de
 TODO
 ----
 
-Kategorisieen löschen
 Twig Support
 CodeMirror Syntax Highlighting je nach Datei
 Analytics Block
+Formular Block
 Meta Tags
 Robots.txt
 Session Service implementieren (für flash messages etc.)
-User from Datebase
+Users from Datebase
+Admin- und Redakteurs-Rechte
