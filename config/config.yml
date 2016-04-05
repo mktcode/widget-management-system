@@ -1,10 +1,11 @@
+# This file is auto-generated during the composer install
 config:
     page.title: 'Widgetized Website'
-    backend.title: 'CREA Mini CMS'
-    backend.bg: '#f38d00'
+    backend.title: 'HTML Widgetizer'
+    backend.bg: '#7bb03b'
     backend.color: '#fff'
     db.host: localhost
     db.user: mkt
     db.pass: 54600
     db.name: htmlwidgetizer
-    cache.lifetime: 360
+    cache.lifetime: 3600
