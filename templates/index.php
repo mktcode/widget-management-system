@@ -48,11 +48,13 @@ if ($vars['category']) {
     <?php
     if ($this->isAdmin()) {
         ?><a href="<?php echo $this->getUrl('content_category_form', ['categoryId' => $vars['category']->getId()]); ?>"
-             class="uk-button uk-button-success">
+             class="uk-button uk-button-success"
+            data-uk-tooltip title="Kategorie bearbeiten">
             <i class="uk-icon-edit"></i>
         </a>
         <a href="#delete-category-modal"
            class="uk-button uk-button-danger"
+           data-uk-tooltip title="Kategorie Löschen"
            data-uk-modal>
             <i class="uk-icon-trash"></i>
         </a><?php
@@ -130,18 +132,25 @@ if (count($vars['contents'])) {
             ?>
             <td class="uk-text-right" width="120">
                 <a href="<?php echo $this->getUrl('content_toggle_active', ['contentId' => $content->getId()]); ?>"
-                   class="uk-button toggle-active">
+                   class="uk-button toggle-active"
+                   data-uk-tooltip title="Inhalt de-/aktivieren">
                     <i class="<?php echo $content->isActive() ? 'uk-icon-check-circle-o' : 'uk-icon-circle-o'; ?>"></i>
                 </a>
                 <a href="<?php echo $this->getUrl(
                     'content_form',
                     ['contentTypeId' => $content->getType(), 'contentId' => $content->getId()]
                 ); ?>"
-                   class="uk-button uk-button-success"><i class="uk-icon-edit"></i></a>
+                   class="uk-button uk-button-success"
+                   data-uk-tooltip title="Inhalt bearbeiten">
+                    <i class="uk-icon-edit"></i>
+                </a>
                 <?php
                 if ($this->isAdmin()) {
                     ?><a href="<?php echo $this->getUrl('content_delete', ['contentId' => $content->getId()]); ?>"
-                         class="open-delete-modal uk-button uk-button-danger"><i class="uk-icon-trash"></i></a><?php
+                         class="open-delete-modal uk-button uk-button-danger"
+                         data-uk-tooltip title="Inhalt Löschen">
+                        <i class="uk-icon-trash"></i>
+                    </a><?php
                 }
                 ?>
             </td>
