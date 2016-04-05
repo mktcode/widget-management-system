@@ -16,7 +16,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.12.0/mode/vbscript/vbscript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.12.0/mode/htmlmixed/htmlmixed.min.js"></script>
     <style type="text/css">
-        .logout:hover {
+        .logout:hover,
+        .logout:focus,
+        .logout:active {
             background-color: #f00 !important;
             color: #fff !important;
         }
@@ -88,6 +90,8 @@
         .uk-navbar,
         .uk-navbar-brand,
         .uk-navbar-brand:hover,
+        .uk-navbar-brand:focus,
+        .uk-navbar-brand:active,
         .uk-navbar-nav > li > a {
             color: <?php echo $this->getParameter('backend.color'); ?>;
         }
