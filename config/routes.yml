@@ -22,6 +22,10 @@ content_delete:
     path: /content/delete/{contentId}
     defaults: { _controller: 'App\Controller\ContentController::deleteAction' }
 
+content_toggle_active:
+    path: /content/toggleactive/{contentId}
+    defaults: { _controller: 'App\Controller\ContentController::toggleActiveAction' }
+
 content_category:
     path: /category/{categoryId}
     defaults: { _controller: 'App\Controller\ContentController::indexAction', categoryId: null }

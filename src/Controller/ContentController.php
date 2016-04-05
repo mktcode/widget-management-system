@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Content;
 use App\Entity\ContentCategory;
 use App\Entity\ContentData;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ContentController extends Controller
@@ -64,11 +65,13 @@ class ContentController extends Controller
             // save content entity
             $redirect = false;
             if (!$content) {
+                // create new content entity
                 $content = new Content();
                 $this->getEntityManager()->persist($content);
 
                 $content->setType($contentTypeId);
                 $content->setHash(md5(time() . uniqid()));
+                $content->setActive(1);
 
                 $redirect = true;
             }
@@ -122,6 +125,24 @@ class ContentController extends Controller
         $this->getEntityManager()->flush();
 
         return new RedirectResponse($this->getUrl('index'));
+    }
+
+    /**
+     * Toggles the active status of a content.
+     *
+     * @param $contentId
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function toggleActiveAction($contentId)
+    {
+        /** @var Content $content */
+        $content = $this->getEntityLoader('App\Entity\Content')->loadById(['id' => $contentId]);
+
+        $content->setActive(!$content->isActive());
+
+        $this->getEntityManager()->flush();
+
+        return new JsonResponse(['active' => $content->isActive()]);
     }
 
     /**

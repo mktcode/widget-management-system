@@ -128,7 +128,11 @@ if (count($vars['contents'])) {
                 </td><?php
             }
             ?>
-            <td class="uk-text-right" width="80">
+            <td class="uk-text-right" width="120">
+                <a href="<?php echo $this->getUrl('content_toggle_active', ['contentId' => $content->getId()]); ?>"
+                   class="uk-button toggle-active">
+                    <i class="<?php echo $content->isActive() ? 'uk-icon-check-circle-o' : 'uk-icon-circle-o'; ?>"></i>
+                </a>
                 <a href="<?php echo $this->getUrl(
                     'content_form',
                     ['contentTypeId' => $content->getType(), 'contentId' => $content->getId()]
@@ -167,39 +171,42 @@ if (count($vars['contents'])) {
         </div>
     </div><?php
 }
-?>
 
+if ($vars['category']) {
+    ?>
     <div id="delete-category-modal" class="uk-modal">
-        <div class="uk-modal-dialog">
-            <a class="uk-modal-close uk-close"></a>
+    <div class="uk-modal-dialog">
+        <a class="uk-modal-close uk-close"></a>
 
-            <div class="uk-modal-header">
-                <h2><i class="uk-icon-trash-o"></i> Löschen bestätigen</h2>
-            </div>
-            Möchten Sie diese Kategorie wirklich löschen?
-            <?php
-            $contentsCount = $this->getService('helper')->getRecursiveCategoryContentCount($vars['category']);
-            if ($contentsCount) {
-                echo '<br><br>Inhalte in dieser Kategorie: <b>' . $contentsCount . '</b> (Einschließlich Unterkategorien).';
-            }
-            ?>
-            <br><br><b class="uk-text-danger">Es werden alle Inhalte, Unterkategorien und deren Inhalte gelöscht!</b>
+        <div class="uk-modal-header">
+            <h2><i class="uk-icon-trash-o"></i> Löschen bestätigen</h2>
+        </div>
+        Möchten Sie diese Kategorie wirklich löschen?
+        <?php
+        $contentsCount = $this->getService('helper')->getRecursiveCategoryContentCount($vars['category']);
+        if ($contentsCount) {
+            echo '<br><br>Inhalte in dieser Kategorie: <b>' . $contentsCount . '</b> (Einschließlich Unterkategorien).';
+        }
+        ?>
+        <br><br><b class="uk-text-danger">Es werden alle Inhalte, Unterkategorien und deren Inhalte gelöscht!</b>
 
-            <div class="uk-modal-footer">
-                <a href="#" class="uk-button uk-button-danger uk-modal-close">
-                    <i class="uk-icon-times"></i>
-                    Nein!
-                </a>
-                <a href="<?php echo $this->getUrl(
-                    'content_category_delete',
-                    ['categoryId' => $vars['category']->getId()]
-                ); ?>" class="uk-button uk-button-success uk-float-right">
-                    <i class="uk-icon-check"></i>
-                    Ja, jetzt löschen!
-                </a>
-            </div>
+        <div class="uk-modal-footer">
+            <a href="#" class="uk-button uk-button-danger uk-modal-close">
+                <i class="uk-icon-times"></i>
+                Nein!
+            </a>
+            <a href="<?php echo $this->getUrl(
+                'content_category_delete',
+                ['categoryId' => $vars['category']->getId()]
+            ); ?>" class="uk-button uk-button-success uk-float-right">
+                <i class="uk-icon-check"></i>
+                Ja, jetzt löschen!
+            </a>
         </div>
     </div>
+    </div><?php
+}
+?>
 
     <script>
         $(function () {
@@ -211,6 +218,12 @@ if (count($vars['contents'])) {
 
                 successButton.attr('href', this.href);
                 modal.show();
+            });
+
+            $('.toggle-active').click(function (e) {
+                e.preventDefault();
+                $.get($(this).attr('href'));
+                $(this).find('i').toggleClass('uk-icon-circle-o uk-icon-check-circle-o');
             });
         });
     </script>

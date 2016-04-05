@@ -58,6 +58,12 @@ class Content
      */
     protected $contentCategory;
 
+    /**
+     * @var bool
+     * @Column(type="boolean")
+     */
+    protected $active;
+
     public function __construct()
     {
         $this->contentData = new ArrayCollection();
@@ -160,6 +166,25 @@ class Content
     public function setContentCategory($contentCategory)
     {
         $this->contentCategory = $contentCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param boolean $active
+     * @return $this
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
 
         return $this;
     }

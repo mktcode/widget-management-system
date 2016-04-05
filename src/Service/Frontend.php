@@ -65,8 +65,10 @@ class Frontend
 
         /** @var Content $content */
         foreach ($contents as $content) {
-            $type = $this->services->get($content->getType());
-            $this->html = str_replace('<!--' . $content->getHash() . '-->', $type->render($content->getId()), $this->html);
+            if ($content->isActive()) {
+                $type = $this->services->get($content->getType());
+                $this->html = str_replace('<!--' . $content->getHash() . '-->', $type->render($content->getId()), $this->html);
+            }
         }
     }
 
