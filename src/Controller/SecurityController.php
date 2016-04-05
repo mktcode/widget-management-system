@@ -30,9 +30,10 @@ class SecurityController extends Controller
             && array_key_exists('user', $_POST)
             && array_key_exists('pass', $_POST)
             && array_key_exists($_POST['user'], $users)
-            && md5($_POST['pass']) == $users[$_POST['user']]
+            && md5($_POST['pass']) == $users[$_POST['user']]['password']
         ) {
-            $_SESSION['user'] = $_POST['user'];
+            $_SESSION['user'] = $users[$_POST['user']];
+            $_SESSION['user']['username'] = $_POST['user'];
             return new RedirectResponse($this->getUrl('index'));
         }
 

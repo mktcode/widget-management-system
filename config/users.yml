@@ -1,1 +1,7 @@
-admin: 21232f297a57a5a743894a0e4a801fc3
+admin:
+    password: 21232f297a57a5a743894a0e4a801fc3
+    role: admin
+
+editor:
+    password: 5aee9dbd2a188839105073571bee1b1fZ
+    role: editor

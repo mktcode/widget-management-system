@@ -118,7 +118,7 @@
             <li>
                 <a href="<?php echo $this->getUrl('logout'); ?>" data-uk-tooltip title="Abmelden" class="logout">
                     <i class="uk-icon-power-off uk-icon-small"></i>
-                    <span class="uk-hidden-small"><?php echo $_SESSION['user']; ?></span>
+                    <span class="uk-hidden-small"><?php echo $_SESSION['user']['username']; ?></span>
                 </a>
             </li>
         </ul>
