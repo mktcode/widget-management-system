@@ -8,4 +8,4 @@ config:
     db.user: mkt
     db.pass: 54600
     db.name: htmlwidgetizer
-    cache.lifetime: 3600
+    cache.lifetime: 3600ad
