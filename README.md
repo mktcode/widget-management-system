@@ -36,6 +36,22 @@ Die beiden Frontcontroller für das Backend und Frontend (`web/backend.php` und 
 
 Das `DocumentRoot` muss das web-Verzeichnis der Installation sein.
 
+User
+----
+
+Die Benutzer werden in `/config/users.yml` definiert. Standardmäßig ist ein Admin und ein Editor vorhanden.
+
+    admin: # Benutzername
+        password: 21232f297a57a5a743894a0e4a801fc3 # MD5 Passwort
+        role: admin # Rolle (admin oder editor)
+    
+    editor:
+        password: 5aee9dbd2a188839105073571bee1b1f
+        role: editor
+
+Benutzer können die Rollen admin und editor haben. Admins haben vollen Zugriff während Editoren nur vorhandene Inhalte
+bearbeiten können.
+
 Neues Widget entwickeln
 -------------------------
 
