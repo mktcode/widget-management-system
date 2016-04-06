@@ -36,6 +36,7 @@ login.goto_website: Ir a la página web
 login.fail: La conexión falló!
 
 cache.clear: Borrar cache
+cache.cleared: El Cache ha sido suprimido!
 page.view: Véase la página
 logout: Logout
 save: Guardar

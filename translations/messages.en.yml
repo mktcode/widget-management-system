@@ -36,6 +36,7 @@ login.goto_website: go to website
 login.fail: Login failed!
 
 cache.clear: Clear cache
+cache.cleared: Cache cleared!
 page.view: View page
 logout: Logout
 save: Save

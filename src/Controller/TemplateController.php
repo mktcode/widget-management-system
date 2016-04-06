@@ -60,6 +60,27 @@ class TemplateController extends Controller
     }
 
     /**
+     * Delete a file.
+     *
+     * @param $file
+     * @return Response
+     */
+    public function deleteAction($file)
+    {
+        $fs = new Filesystem();
+        $absPath = __DIR__ . '/../../web/' . $file;
+        if ($fs->exists($absPath)) {
+            $fs->remove($absPath);
+        }
+
+        if ($_SERVER['HTTP_REFERER']) {
+            return new RedirectResponse($_SERVER['HTTP_REFERER']);
+        }
+
+        return new RedirectResponse($this->getUrl('template'));
+    }
+
+    /**
      * Clears the cache.
      *
      * @return RedirectResponse
@@ -69,7 +90,7 @@ class TemplateController extends Controller
         $fs = new Filesystem();
         $fs->remove(glob(__DIR__ . '/../../cache/frontend/*'));
 
-        $this->getSession()->getFlashBag()->add('success', 'Cache gelöscht!');
+        $this->getSession()->getFlashBag()->add('success', $this->translate('cache.cleared'));
 
         if ($_SERVER['HTTP_REFERER']) {
             return new RedirectResponse($_SERVER['HTTP_REFERER']);
