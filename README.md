@@ -42,12 +42,12 @@ User
 Die Benutzer werden in `/config/users.yml` definiert. Standardmäßig ist ein Admin und ein Editor vorhanden.
 
     admin: # Benutzername
-        password: 21232f297a57a5a743894a0e4a801fc3 # MD5 Passwort
-        role: admin # Rolle (admin oder editor)
+        password: 21232f297a57a5a743894a0e4a801fc3 # md5(admin)
+        role: admin # Rolle
     
     editor:
-        password: 5aee9dbd2a188839105073571bee1b1f
-        role: editor
+        password: 5aee9dbd2a188839105073571bee1b1f # md5(editor)
+        role: editor #Rolle
 
 Benutzer können die Rollen admin und editor haben. Admins haben vollen Zugriff während Editoren nur vorhandene Inhalte
 bearbeiten können.
