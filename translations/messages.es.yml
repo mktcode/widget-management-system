@@ -32,6 +32,8 @@ template.delete: Eliminar Template
 login.username: Nombre de usuario
 login.password: Contraseña
 login.login: Login
+login.goto_website: Ir a la página web
+login.fail: La conexión falló!
 
 cache.clear: Borrar cache
 page.view: Véase la página

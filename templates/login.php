@@ -15,6 +15,13 @@
             color: <?php echo $this->getParameter('backend.color'); ?>;
         }
 
+        a,
+        a:hover,
+        a:focus,
+        a:active {
+            color: <?php echo $this->getParameter('backend.color'); ?>;
+        }
+
         .uk-panel-box {
             background: transparent;
             color: <?php echo $this->getParameter('backend.color'); ?>;
@@ -50,6 +57,11 @@
             <button class="uk-width-1-1 uk-button uk-button-success uk-button-large"><?php echo $this->translate('login.login'); ?></button>
         </div>
     </form>
+
+    <a href="/">
+        <?php echo $this->translate('login.goto_website'); ?>
+        <i class="uk-icon-angle-double-right"></i>
+    </a>
 </div>
 
 </body>

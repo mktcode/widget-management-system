@@ -38,7 +38,7 @@ class SecurityController extends Controller
                 return new RedirectResponse($this->getUrl('index'));
             }
 
-            $message = '<div class="uk-alert uk-alert-danger"><i class="uk-icon-warning"></i> Login fehlgeschlagen!</div>';
+            $message = '<div class="uk-alert uk-alert-danger"><i class="uk-icon-warning"></i> ' . $this->translate('login.fail') . '</div>';
         }
 
         return $this->render(['message' => $message]);
@@ -55,6 +55,6 @@ class SecurityController extends Controller
         session_destroy();
 
         // redirect to frontend
-        return new RedirectResponse('/');
+        return new RedirectResponse($this->getUrl('login'));
     }
 }
