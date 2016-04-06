@@ -1,7 +1,7 @@
 config:
     page.title: 'Widgetized Website'
     backend.title: 'HTML Widgetizer'
-    backend.bg: '#7bb03b'
+    backend.bg: '#069865'
     backend.color: '#fff'
     db.host: localhost
     db.user: root
