@@ -33,7 +33,8 @@ include 'header.php';
             <td>
                 <?php
                 if ($file->isDir()) {
-                    ?><ahref="<?php echo $this->getUrl(
+                    ?>
+                    <ahref="<?php echo $this->getUrl(
                         'template',
                         ['dir' => trim($vars['dir'] . '/' . $file->getRelativePathname(), '/')]
                     ) ?>" class="uk-button uk-width-1-1 uk-text-left"><i
@@ -52,10 +53,12 @@ include 'header.php';
                     'template_edit',
                     ['file' => trim($vars['dir'] . '/' . $file->getRelativePathname(), '/')]
                 ) ?>"
-                   class="uk-button uk-button-success" data-uk-tooltip title="<?php echo $this->translate('template.edit'); ?>">
+                   class="uk-button uk-button-success"
+                   data-uk-tooltip title="<?php echo $this->translate('template.edit'); ?>">
                     <i class="uk-icon-edit"></i>
                 </a>
-                <a href="#" class="uk-button uk-button-danger"  data-uk-tooltip title="<?php echo $this->translate('template.delete'); ?>">
+                <a href="#" class="uk-button uk-button-danger"
+                   data-uk-tooltip title="<?php echo $this->translate('template.delete'); ?>">
                     <i class="uk-icon-trash"></i>
                 </a>
             </td>
