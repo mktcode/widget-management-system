@@ -11,6 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Translation\Translator;
 
 class Controller implements ContainerAwareInterface
 {
@@ -57,6 +58,20 @@ class Controller implements ContainerAwareInterface
     public function getSession()
     {
         return $this->getService('session');
+    }
+
+    /**
+     * Translates a string by key.
+     *
+     * @param $key
+     * @return string
+     */
+    public function translate($key, $parameters = [])
+    {
+        /** @var Translator $translator */
+        $translator = $this->getService('translator');
+
+        return $translator->trans($key, $parameters);
     }
 
     /**

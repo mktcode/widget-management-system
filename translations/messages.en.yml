@@ -1,0 +1,39 @@
+content.contents: Contents
+content.new_content: New Content
+content.content_saved: Content saved!
+content.new_category: New Category
+content.edit_category: Edit Category
+content.delete_category: Delete Category
+content.choose_category: Choose Category...
+content.category_parent: Parent Category
+content.category_saved: Category saved!
+content.category_name_placeholder: Enter name...
+content.table.columns.title: Title
+content.table.columns.title.text: The title will not be shown on the website. It's just for internal labeling of contents.
+content.table.columns.snippet: Snippet
+content.table.columns.snippet.text: The snippet code has to be pasted to one or more of your template files. The content then appears at these places.
+content.table.buttons.toggle: Enable/Disable Content
+content.table.buttons.edit: Edit Content
+content.table.buttons.delete: Delete Content
+content.delete.title: Confirm deleting
+content.delete.text: Do you really want to delete this content?
+content.delete.cancel: No!
+content.delete.confirm: Yes, delete now!
+content.category.delete.text1: Do you really want to delete this category?
+content.category.delete.text2: "Contents in this category: <b>%contents_count%</b> (Including subcategories)"
+content.category.delete.text3: All contents, subcategories and their contents will be deleted!
+
+template.templates: Templates
+template.table.columns.file: File
+template.table.columns.type: Type
+template.edit: Edit Template
+template.delete: Delete Template
+
+login.username: Username
+login.password: Password
+login.login: Login
+
+cache.clear: Clear cache
+page.view: View page
+logout: Logout
+save: Save

@@ -84,7 +84,7 @@ class ContentController extends Controller
             // call type specific save method
             $contentType->save($content->getId(), $_POST);
 
-            $this->getSession()->getFlashBag()->add('success', 'Inhalt gespeichert!');
+            $this->getSession()->getFlashBag()->add('success', $this->translate('content.content_saved'));
 
             return new RedirectResponse($this->getUrl('content_form', [
                 'contentTypeId' => $contentTypeId,
@@ -173,7 +173,7 @@ class ContentController extends Controller
 
             $this->getEntityManager()->flush();
 
-            $this->getSession()->getFlashBag()->add('success', 'Kategorie gespeichert!');
+            $this->getSession()->getFlashBag()->add('success', $this->translate('content.category_saved'));
 
             return new RedirectResponse($this->getUrl('content_category_form', ['categoryId' => $category->getId()]));
         }

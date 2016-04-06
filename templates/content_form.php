@@ -34,7 +34,7 @@ $categories = $vars['categories'];
         if ($categories) {
             ?><label class="uk-margin-bottom uk-display-block">
             <select name="category" class="uk-form-large uk-width-1-1">
-                <option value="">Kategorie wählen...</option>
+                <option value=""><?php echo $this->translate('content.choose_category'); ?></option>
                 <?php
                 /** @var ContentCategory $cat */
                 foreach ($categories as $cat) {
@@ -53,7 +53,7 @@ $categories = $vars['categories'];
 
         <button type="submit" class="uk-button uk-button-success uk-margin-top uk-margin-top">
             <i class="uk-icon-check"></i>
-            Speichern
+            <?php echo $this->translate('save'); ?>
         </button>
     </form>
 

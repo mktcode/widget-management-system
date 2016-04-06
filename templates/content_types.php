@@ -4,7 +4,7 @@ use App\ContentType\ContentType;
 
 include 'header.php'; ?>
 
-    <h1>Neuer Inhalt</h1>
+    <h1><?php echo $this->translate('content.new_content'); ?></h1>
 
     <div class="uk-grid" data-uk-grid-margin>
         <?php

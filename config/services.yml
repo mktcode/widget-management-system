@@ -30,6 +30,10 @@ services:
         class: App\Service\Helper
         arguments: ['@config', '@database', '@request', '@routing']
 
+    translator:
+        class: App\Service\Translator
+        arguments: ['@config']
+
     frontend:
         class: App\Service\Frontend
 

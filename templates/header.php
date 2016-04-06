@@ -107,7 +107,7 @@
     <div class="uk-navbar-flip">
         <ul class="uk-navbar-nav">
             <li>
-                <a href="<?php echo $this->getUrl('index'); ?>" data-uk-tooltip title="Inhalte">
+                <a href="<?php echo $this->getUrl('index'); ?>" data-uk-tooltip title="<?php echo $this->translate('content.contents'); ?>">
                     <i class="uk-icon-file-text uk-icon-small"></i>
                 </a>
             </li>
@@ -115,29 +115,29 @@
             if ($this->isAdmin()) {
                 ?>
                 <li>
-                    <a href="<?php echo $this->getUrl('content_types'); ?>" data-uk-tooltip title="Neuer Inhalt">
+                    <a href="<?php echo $this->getUrl('content_types'); ?>" data-uk-tooltip title="<?php echo $this->translate('content.new_content'); ?>">
                         <i class="uk-icon-plus uk-icon-small"></i>
                     </a>
                 </li>
                 <li>
-                <a href="<?php echo $this->getUrl('template'); ?>" data-uk-tooltip title="Templates">
+                <a href="<?php echo $this->getUrl('template'); ?>" data-uk-tooltip title="<?php echo $this->translate('template.templates'); ?>">
                     <i class="uk-icon-file-code-o uk-icon-small"></i>
                 </a>
                 </li><?php
             }
             ?>
             <li>
-                <a href="<?php echo $this->getUrl('template_clearcache'); ?>" data-uk-tooltip title="Cache löschen">
+                <a href="<?php echo $this->getUrl('template_clearcache'); ?>" data-uk-tooltip title="<?php echo $this->translate('cache.clear'); ?>">
                     <i class="uk-icon-refresh uk-icon-small"></i>
                 </a>
             </li>
             <li>
-                <a href="/" data-uk-tooltip title="Seite ansehen" target="_blank">
+                <a href="/" data-uk-tooltip title="<?php echo $this->translate('page.view'); ?>" target="_blank">
                     <i class="uk-icon-eye uk-icon-small"></i>
                 </a>
             </li>
             <li>
-                <a href="<?php echo $this->getUrl('logout'); ?>" data-uk-tooltip title="Abmelden" class="logout">
+                <a href="<?php echo $this->getUrl('logout'); ?>" data-uk-tooltip title="<?php echo $this->translate('logout'); ?>" class="logout">
                     <i class="uk-icon-power-off uk-icon-small"></i>
                     <span class="uk-hidden-small"><?php echo $_SESSION['user']['username']; ?></span>
                 </a>

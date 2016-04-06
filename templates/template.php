@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 ?>
-    <h1>Templates</h1>
+    <h1><?php echo $this->translate('template.templates'); ?></h1>
     <h2>
         <a class="uk-button" href="<?php echo $this->getUrl('template'); ?>">/</a>
         <?php
@@ -18,10 +18,10 @@ include 'header.php';
     <table class="uk-table uk-table-hover uk-margin-large-top">
         <tr>
             <th>
-                Datei
+                <?php echo $this->translate('template.table.columns.file'); ?>
             </th>
             <th>
-                Typ
+                <?php echo $this->translate('template.table.columns.type'); ?>
             </th>
             <th></th>
         </tr>
@@ -52,10 +52,10 @@ include 'header.php';
                     'template_edit',
                     ['file' => trim($vars['dir'] . '/' . $file->getRelativePathname(), '/')]
                 ) ?>"
-                   class="uk-button uk-button-success" data-uk-tooltip title="Template bearbeiten">
+                   class="uk-button uk-button-success" data-uk-tooltip title="<?php echo $this->translate('template.edit'); ?>">
                     <i class="uk-icon-edit"></i>
                 </a>
-                <a href="#" class="uk-button uk-button-danger"  data-uk-tooltip title="Template löschen">
+                <a href="#" class="uk-button uk-button-danger"  data-uk-tooltip title="<?php echo $this->translate('template.delete'); ?>">
                     <i class="uk-icon-trash"></i>
                 </a>
             </td>

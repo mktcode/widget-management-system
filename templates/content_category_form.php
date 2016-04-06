@@ -9,14 +9,14 @@ $categories = $vars['categories'];
 ?>
     <h1>
         <i class="uk-icon-folder"></i>
-        Kategorie
+        <?php echo $this->translate($category ? 'content.edit_category' : 'content.new_category'); ?>
     </h1>
 
     <form action="" method="post" class="uk-form">
         <label class="uk-margin-bottom uk-display-block">
             <input type="text" name="name" class="uk-form-large uk-width-1-1"
                    style="font-size: 24px; line-height: 26px;"
-                   placeholder="Name eingeben..."
+                   placeholder="<?php echo $this->translate('content.category_name_placeholder'); ?>"
                    value="<?php if ($category) {
                        echo $category->getName();
                    } ?>" required/>
@@ -25,9 +25,9 @@ $categories = $vars['categories'];
         <?php
         if (count($categories) && (!$category || $categories[0]->getId() != $category->getId())) {
             ?><label class="uk-margin-bottom uk-display-block">
-            Elternkategorie<br>
+            <?php echo $this->translate('content.category_parent'); ?><br>
             <select name="parent" class="uk-form-large uk-width-1-1">
-                <option value=""></option>
+                <option value=""><?php echo $this->translate('content.choose_category'); ?></option>
                 <?php
                 /** @var ContentCategory $cat */
                 foreach ($categories as $cat) {
@@ -50,7 +50,7 @@ $categories = $vars['categories'];
 
         <button type="submit" class="uk-button uk-button-success uk-margin-top uk-margin-top">
             <i class="uk-icon-check"></i>
-            Speichern
+            <?php echo $this->translate('save'); ?>
         </button>
     </form>
 

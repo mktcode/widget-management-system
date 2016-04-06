@@ -16,7 +16,7 @@ if ($this->isAdmin()) {
                $vars['contents']
            ) && !$vars['category'] && !$vars['categories'] ? ' button-enormous' : ''; ?> uk-width-1-1">
             <i class="uk-icon-plus"></i>
-            Neuer Inhalt
+            <?php echo $this->translate('content.new_content'); ?>
         </a>
     </div>
     <div class="uk-text-center">
@@ -25,7 +25,7 @@ if ($this->isAdmin()) {
                $vars['contents']
            ) && !$vars['category'] && !$vars['categories'] ? ' button-huge' : ''; ?> uk-margin-top uk-width-1-1">
             <i class="uk-icon-plus"></i>
-            Neue Kategorie
+            <?php echo $this->translate('content.new_category'); ?>
         </a>
     </div>
 <?php
@@ -49,12 +49,12 @@ if ($vars['category']) {
     if ($this->isAdmin()) {
         ?><a href="<?php echo $this->getUrl('content_category_form', ['categoryId' => $vars['category']->getId()]); ?>"
              class="uk-button uk-button-success"
-            data-uk-tooltip title="Kategorie bearbeiten">
+             data-uk-tooltip title="<?php echo $this->translate('content.edit_category'); ?>">
             <i class="uk-icon-edit"></i>
         </a>
         <a href="#delete-category-modal"
            class="uk-button uk-button-danger"
-           data-uk-tooltip title="Kategorie Löschen"
+           data-uk-tooltip title="<?php echo $this->translate('content.delete_category'); ?>"
            data-uk-modal>
             <i class="uk-icon-trash"></i>
         </a><?php
@@ -86,17 +86,17 @@ if (count($vars['contents'])) {
         <tr class="uk-hidden-small">
             <th width="15"></th>
             <th>
-                Titel
+                <?php echo $this->translate('content.table.columns.title'); ?>
                 <i class="uk-icon-question-circle" data-uk-tooltip
-                   title="Der Titel wird im Template nicht angezeigt. Er dient nur der internen Bezeichnung von Inhalten."></i>
+                   title="<?php echo $this->translate('content.table.columns.title.text'); ?>"></i>
             </th>
             <?php
             if ($this->isAdmin()) {
                 ?>
                 <th>
-                    Snippet
-                    <i class="uk-icon-question-circle" data-uk-tooltip
-                       title="Das Snippet muss im Template eingefügt werden. An dieser Stelle erscheint dann der Inhalt."></i>
+                <?php echo $this->translate('content.table.columns.snippet'); ?>
+                <i class="uk-icon-question-circle" data-uk-tooltip
+                   title="<?php echo $this->translate('content.table.columns.snippet.text'); ?>"></i>
                 </th><?php
             }
             ?>
@@ -112,7 +112,8 @@ if (count($vars['contents'])) {
             <td>
                 <?php
                 if ($contentType->getIcon()) {
-                    ?><i class="uk-icon-<?php echo $contentType->getIcon(); ?>"></i><?php
+                    ?><i class="uk-icon-<?php echo $contentType->getIcon(); ?>"
+                    data-uk-tooltip title="<?php echo $contentType->getLabel(); ?>"></i><?php
                 }
                 ?>
             </td>
@@ -133,7 +134,7 @@ if (count($vars['contents'])) {
             <td class="uk-text-right" width="120">
                 <a href="<?php echo $this->getUrl('content_toggle_active', ['contentId' => $content->getId()]); ?>"
                    class="uk-button toggle-active"
-                   data-uk-tooltip title="Inhalt de-/aktivieren">
+                   data-uk-tooltip title="<?php echo $this->translate('content.table.buttons.toggle'); ?>">
                     <i class="<?php echo $content->isActive() ? 'uk-icon-check-circle-o' : 'uk-icon-circle-o'; ?>"></i>
                 </a>
                 <a href="<?php echo $this->getUrl(
@@ -141,14 +142,14 @@ if (count($vars['contents'])) {
                     ['contentTypeId' => $content->getType(), 'contentId' => $content->getId()]
                 ); ?>"
                    class="uk-button uk-button-success"
-                   data-uk-tooltip title="Inhalt bearbeiten">
+                   data-uk-tooltip title="<?php echo $this->translate('content.table.buttons.edit'); ?>">
                     <i class="uk-icon-edit"></i>
                 </a>
                 <?php
                 if ($this->isAdmin()) {
                     ?><a href="<?php echo $this->getUrl('content_delete', ['contentId' => $content->getId()]); ?>"
                          class="open-delete-modal uk-button uk-button-danger"
-                         data-uk-tooltip title="Inhalt Löschen">
+                         data-uk-tooltip title="<?php echo $this->translate('content.table.buttons.delete'); ?>">
                         <i class="uk-icon-trash"></i>
                     </a><?php
                 }
@@ -164,17 +165,17 @@ if (count($vars['contents'])) {
             <a class="uk-modal-close uk-close"></a>
 
             <div class="uk-modal-header">
-                <h2><i class="uk-icon-trash-o"></i> Löschen bestätigen</h2>
+                <h2><i class="uk-icon-trash-o"></i> <?php echo $this->translate('content.delete.title'); ?></h2>
             </div>
-            Möchten Sie diesen Inhalt wirklich löschen?
+            <?php echo $this->translate('content.delete.text'); ?>
             <div class="uk-modal-footer">
                 <a href="#" class="uk-button uk-button-danger uk-modal-close">
                     <i class="uk-icon-times"></i>
-                    Nein!
+                    <?php echo $this->translate('content.delete.cancel'); ?>
                 </a>
                 <a href="#" class="uk-button uk-button-success uk-float-right">
                     <i class="uk-icon-check"></i>
-                    Ja, jetzt löschen!
+                    <?php echo $this->translate('content.delete.confirm'); ?>
                 </a>
             </div>
         </div>
@@ -188,28 +189,28 @@ if ($vars['category']) {
         <a class="uk-modal-close uk-close"></a>
 
         <div class="uk-modal-header">
-            <h2><i class="uk-icon-trash-o"></i> Löschen bestätigen</h2>
+            <h2><i class="uk-icon-trash-o"></i> <?php echo $this->translate('content.delete.title'); ?></h2>
         </div>
-        Möchten Sie diese Kategorie wirklich löschen?
+        <?php echo $this->translate('content.category.delete.text1'); ?>
         <?php
         $contentsCount = $this->getService('helper')->getRecursiveCategoryContentCount($vars['category']);
         if ($contentsCount) {
-            echo '<br><br>Inhalte in dieser Kategorie: <b>' . $contentsCount . '</b> (Einschließlich Unterkategorien).';
+            echo '<br><br>' . $this->translate('content.category.delete.text2', ['%contents_count%' => $contentsCount]);
         }
         ?>
-        <br><br><b class="uk-text-danger">Es werden alle Inhalte, Unterkategorien und deren Inhalte gelöscht!</b>
+        <br><br><b class="uk-text-danger"><?php echo $this->translate('content.category.delete.text3'); ?></b>
 
         <div class="uk-modal-footer">
             <a href="#" class="uk-button uk-button-danger uk-modal-close">
                 <i class="uk-icon-times"></i>
-                Nein!
+                <?php echo $this->translate('content.delete.cancel'); ?>
             </a>
             <a href="<?php echo $this->getUrl(
                 'content_category_delete',
                 ['categoryId' => $vars['category']->getId()]
             ); ?>" class="uk-button uk-button-success uk-float-right">
                 <i class="uk-icon-check"></i>
-                Ja, jetzt löschen!
+                <?php echo $this->translate('content.delete.confirm'); ?>
             </a>
         </div>
     </div>

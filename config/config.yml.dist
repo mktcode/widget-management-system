@@ -8,3 +8,4 @@ config:
     db.pass: root
     db.name: htmlwidgetizer
     cache.lifetime: 3600
+    locale: en
