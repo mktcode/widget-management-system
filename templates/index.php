@@ -6,6 +6,8 @@ use App\Entity\ContentCategory;
 
 include 'header.php';
 
+?><h1><?php echo $this->translate('content.contents'); ?></h1><?php
+
 if ($this->isAdmin()) {
     ?>
     <div class="uk-text-center <?php if (!count($vars['contents']) && !count($vars['categories'])) {

@@ -23,11 +23,11 @@ content.category.delete.text1: Do you really want to delete this category?
 content.category.delete.text2: "Contents in this category: <b>%contents_count%</b> (Including subcategories)"
 content.category.delete.text3: All contents, subcategories and their contents will be deleted!
 
-template.templates: Templates
-template.table.columns.file: File
-template.table.columns.type: Type
-template.edit: Edit Template
-template.delete: Delete Template
+file.files: Files
+file.table.columns.file: File
+file.table.columns.type: Type
+file.edit: Edit File
+file.saved: File saved!
 
 login.username: Username
 login.password: Password

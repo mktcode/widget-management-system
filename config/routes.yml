@@ -38,24 +38,24 @@ content_category_delete:
     path: /content/category/delete/{categoryId}
     defaults: { _controller: 'App\Controller\ContentController::categoryDeleteAction' }
 
-template_edit:
-    path: /template/edit/{file}
-    defaults: { _controller: 'App\Controller\TemplateController::editAction' }
+file_edit:
+    path: /file/edit/{file}
+    defaults: { _controller: 'App\Controller\FileController::editAction' }
     requirements:
         file: .+
 
-template_delete:
-    path: /template/delete/{file}
-    defaults: { _controller: 'App\Controller\TemplateController::deleteAction' }
-    requirements:
-        file: .+
+#file_delete:
+#    path: /file/delete/{file}
+#    defaults: { _controller: 'App\Controller\FileController::deleteAction' }
+#    requirements:
+#        file: .+
 
-template_clearcache:
-    path: /template/clearcache
-    defaults: { _controller: 'App\Controller\TemplateController::clearCacheAction' }
+files_clearcache:
+    path: /files/clearcache
+    defaults: { _controller: 'App\Controller\FileController::clearCacheAction' }
 
-template:
-    path:     /template/{dir}
-    defaults: { _controller: 'App\Controller\TemplateController::indexAction', dir: '' }
+files:
+    path: /files/{dir}
+    defaults: { _controller: 'App\Controller\FileController::indexAction', dir: '' }
     requirements:
         dir: .+

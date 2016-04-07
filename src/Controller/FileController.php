@@ -7,7 +7,7 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class TemplateController extends Controller
+class FileController extends Controller
 {
     /**
      * Show the file browser for the web directory.
@@ -52,7 +52,7 @@ class TemplateController extends Controller
             $fs = new Filesystem();
             $fs->dumpFile(__DIR__ . '/../../web/' . $file, $_POST['file']);
 
-            $this->getSession()->getFlashBag()->add('success', 'Template gespeichert!');
+            $this->getSession()->getFlashBag()->add('success', $this->translate('file.saved'));
         }
 
         $content = file_get_contents(__DIR__ . '/../../web/' . $file);
@@ -60,7 +60,7 @@ class TemplateController extends Controller
     }
 
     /**
-     * Delete a file.
+     * Deletes a file or directory.
      *
      * @param $file
      * @return Response
@@ -77,7 +77,7 @@ class TemplateController extends Controller
             return new RedirectResponse($_SERVER['HTTP_REFERER']);
         }
 
-        return new RedirectResponse($this->getUrl('template'));
+        return new RedirectResponse($this->getUrl('files'));
     }
 
     /**

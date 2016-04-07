@@ -1,27 +1,58 @@
 <?php
 include 'header.php';
 ?>
-    <h1><?php echo $this->translate('template.templates'); ?></h1>
-    <h2>
-        <a class="uk-button" href="<?php echo $this->getUrl('template'); ?>">/</a>
-        <?php
-        $path = '';
-        foreach (array_filter(explode('/', $vars['dir'])) as $subdir) {
-            $path .= '/' . $subdir;
-            ?><a class="uk-button"href="<?php echo $this->getUrl(
-                'template',
+<h1><?php echo $this->translate('file.files'); ?></h1>
+<?php
+
+/*
+?>
+    <div class="uk-text-center <?php if (!$vars['dir'] && !$vars['finder']->count()) {
+        echo ' uk-margin-large-top';
+    } ?>">
+        <a href="<?php echo $this->getUrl('files'); ?>"
+           class="uk-button uk-button-success uk-button-large button-huge<?php echo !$vars['dir'] && !$vars['finder']->count(
+           ) ? ' button-enormous' : ''; ?> uk-width-1-1">
+            <i class="uk-icon-plus"></i>
+            <?php echo $this->translate('file.new_file'); ?>
+        </a>
+    </div>
+    <div class="uk-text-center">
+        <a href="<?php echo $this->getUrl('files'); ?>"
+           class="uk-button uk-button-success uk-button-large<?php echo !$vars['dir'] && !$vars['finder']->count(
+           ) ? ' button-huge' : ''; ?> uk-margin-top uk-width-1-1">
+            <i class="uk-icon-plus"></i>
+            <?php echo $this->translate('file.new_folder'); ?>
+        </a>
+    </div>
+<?php
+*/
+
+if ($vars['dir'] || $vars['finder']->count()) {
+    if ($vars['dir']) {
+        ?><a class="uk-button" href="<?php echo $this->getUrl('files'); ?>">/</a> <?php
+    }
+
+    $path = '';
+    $subdirs = array_filter(explode('/', $vars['dir']));
+    foreach ($subdirs as $subdir) {
+        $path .= '/' . $subdir;
+        if (end($subdirs) !== $subdir) {
+            ?><a class="uk-button" href="<?php echo $this->getUrl(
+                'files',
                 ['dir' => trim($path, '/')]
             ); ?>"><?php echo $subdir; ?></a> <?php
+        } else {
+            echo '<button class="uk-button" disabled>' . $subdir . '</button>';
         }
-        ?>
-    </h2>
-    <table class="uk-table uk-table-hover uk-margin-large-top">
+    }
+    ?>
+    <table class="uk-table uk-table-hover">
         <tr>
             <th>
-                <?php echo $this->translate('template.table.columns.file'); ?>
+                <?php echo $this->translate('file.table.columns.file'); ?>
             </th>
             <th>
-                <?php echo $this->translate('template.table.columns.type'); ?>
+                <?php echo $this->translate('file.table.columns.type'); ?>
             </th>
             <th></th>
         </tr>
@@ -35,7 +66,7 @@ include 'header.php';
                 if ($file->isDir()) {
                     ?>
                     <a href="<?php echo $this->getUrl(
-                        'template',
+                        'files',
                         ['dir' => trim($vars['dir'] . '/' . $file->getRelativePathname(), '/')]
                     ) ?>" class="uk-button uk-width-1-1 uk-text-left"><i
                             class="uk-icon-folder-o"></i> <?php echo $file->getRelativePathname(); ?></a> <?php
@@ -46,39 +77,50 @@ include 'header.php';
                 ?>
             </td>
             <td style="width: 50px; line-height: 30px;">
-                <?php echo $file->getExtension(); ?>
+                <?php echo strtoupper($file->getExtension()); ?>
             </td>
             <td class="uk-text-right" style="width: 80px;">
+                <?php
+                if (!$file->isDir()) {
+                    ?>
                 <a href="<?php echo $this->getUrl(
-                    'template_edit',
+                    'file_edit',
                     ['file' => trim($vars['dir'] . '/' . $file->getRelativePathname(), '/')]
                 ) ?>"
                    class="uk-button uk-button-success"
-                   data-uk-tooltip title="<?php echo $this->translate('template.edit'); ?>">
-                    <i class="uk-icon-edit"></i>
-                </a>
+                   data-uk-tooltip title="<?php echo $this->translate('file.edit'); ?>">
+                        <i class="uk-icon-edit"></i>
+                    </a><?php
+                }
+
+                /*
                 <a href="<?php echo $this->getUrl(
-                    'template_delete',
+                    'file_delete',
                     ['file' => trim($vars['dir'] . '/' . $file->getRelativePathname(), '/')]
                 ); ?>"
                    class="open-delete-modal uk-button uk-button-danger"
-                   data-uk-tooltip title="<?php echo $this->translate('template.delete'); ?>">
+                   data-uk-tooltip title="<?php echo $this->translate('file.delete'); ?>">
                     <i class="uk-icon-trash"></i>
                 </a>
+                */
+
+                ?>
             </td>
             </tr><?php
         }
         ?>
     </table>
 
+    <?php
+    /*
     <div id="delete-modal" class="uk-modal">
         <div class="uk-modal-dialog">
             <a class="uk-modal-close uk-close"></a>
 
             <div class="uk-modal-header">
-                <h2><i class="uk-icon-trash-o"></i> <?php echo $this->translate('template.delete.title'); ?></h2>
+                <h2><i class="uk-icon-trash-o"></i> <?php echo $this->translate('file.delete.title'); ?></h2>
             </div>
-            <?php echo $this->translate('template.delete.text'); ?>
+            <?php echo $this->translate('file.delete.text'); ?>
             <div class="uk-modal-footer">
                 <a href="#" class="uk-button uk-button-danger uk-modal-close">
                     <i class="uk-icon-times"></i>
@@ -91,7 +133,13 @@ include 'header.php';
             </div>
         </div>
     </div>
+    */
+    ?>
+<?php
+}
 
+/*
+?>
     <script>
         $(function () {
             var modal = UIkit.modal("#delete-modal"),
@@ -106,4 +154,7 @@ include 'header.php';
         });
     </script>
 
-<?php include 'footer.php'; ?>
+<?php
+*/
+
+include 'footer.php';

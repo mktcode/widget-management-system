@@ -23,11 +23,11 @@ content.category.delete.text1: Möchten Sie diese Kategorie wirklich löschen?
 content.category.delete.text2: "Inhalte in dieser Kategorie: <b>%contents_count%</b> (Einschließlich Unterkategorien)"
 content.category.delete.text3: Es werden alle Inhalte, Unterkategorien und deren Inhalte gelöscht!
 
-template.templates: Templates
-template.table.columns.file: Datei
-template.table.columns.type: Typ
-template.edit: Template bearbeiten
-template.delete: Template löschen
+file.files: Dateien
+file.table.columns.file: Datei
+file.table.columns.type: Typ
+file.edit: Datei bearbeiten
+file.saved: Datei gespeichert!
 
 login.username: Benutzername
 login.password: Passwort

@@ -1,12 +1,12 @@
 <?php
 include 'header.php';
 ?>
-    <h1><?php echo $this->translate('template.edit'); ?></h1>
+    <h1><?php echo $this->translate('file.edit'); ?></h1>
     <h2>
         <?php echo '/' . $vars['file']; ?>
     </h2>
 
-    <form class="uk-form" method="post" action="<?php echo $this->getUrl('template_edit', ['file' => $vars['file']]); ?>">
+    <form class="uk-form" method="post" action="<?php echo $this->getUrl('file_edit', ['file' => $vars['file']]); ?>">
         <button type="submit" class="uk-button uk-button-success uk-margin-top uk-margin-bottom">
             <i class="uk-icon-check"></i>
             <?php echo $this->translate('save'); ?>

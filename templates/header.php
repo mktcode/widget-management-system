@@ -122,8 +122,8 @@
                     </a>
                 </li>
                 <li>
-                <a href="<?php echo $this->getUrl('template'); ?>" data-uk-tooltip
-                   title="<?php echo $this->translate('template.templates'); ?>">
+                <a href="<?php echo $this->getUrl('files'); ?>" data-uk-tooltip
+                   title="<?php echo $this->translate('file.files'); ?>">
                     <i class="uk-icon-file-code-o uk-icon-small"></i>
                 </a>
                 </li><?php
@@ -132,7 +132,7 @@
             if ($this->getParameter('cache.lifetime')) {
                 ?>
                 <li>
-                <a href="<?php echo $this->getUrl('template_clearcache'); ?>" data-uk-tooltip
+                <a href="<?php echo $this->getUrl('files_clearcache'); ?>" data-uk-tooltip
                    title="<?php echo $this->translate('cache.clear'); ?>">
                     <i class="uk-icon-refresh uk-icon-small"></i>
                 </a>
