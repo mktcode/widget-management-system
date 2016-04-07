@@ -19,6 +19,8 @@ content.delete.title: Confirmar eliminación
 content.delete.text: Realmente desea eliminar este contenido?
 content.delete.cancel: No!
 content.delete.confirm: Sí, eliminar ahora!
+content.deleted: Contenido ha sido suprimido!
+content.category.deleted: Categoría ha sido suprimido!
 content.category.delete.text1: Realmente desea eliminar este categoría?
 content.category.delete.text2: "Contenidos en esta categoría: <b>%contents_count%</b> (Incluidas las subcategorías)"
 content.category.delete.text3: Se eliminará todas las categorías de contenido y su contenido!
@@ -40,3 +42,6 @@ cache.cleared: El Cache ha sido suprimido!
 page.view: Véase la página
 logout: Logout
 save: Guardar
+save_and_new: Guardar & New
+save_and_close: Guardar & Cierre
+close: Cierre

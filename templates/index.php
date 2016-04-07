@@ -10,10 +10,8 @@ include 'header.php';
 
 if ($this->isAdmin()) {
     ?>
-    <div class="uk-text-center <?php if (!count($vars['contents']) && !count($vars['categories'])) {
-        echo ' uk-margin-large-top';
-    } ?>">
-        <a href="<?php echo $this->getUrl('content_types'); ?>"
+    <div class="uk-text-center">
+        <a href="<?php echo $vars['category'] ? $this->getUrl('content_types', ['categoryId' => $vars['category']->getId()]) : $this->getUrl('content_types'); ?>"
            class="uk-button uk-button-success uk-button-large button-huge<?php echo !count(
                $vars['contents']
            ) && !$vars['category'] && !$vars['categories'] ? ' button-enormous' : ''; ?> uk-width-1-1">

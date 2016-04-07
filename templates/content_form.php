@@ -38,10 +38,13 @@ $categories = $vars['categories'];
                 <?php
                 /** @var ContentCategory $cat */
                 foreach ($categories as $cat) {
+                    $currentContentCategorySelected = $content && $content->getContentCategory() && $cat->getId() == $content->getContentCategory()->getId();
+                    $newContentCategorySelected = !$content && $cat->getId() == (int) $_GET['categoryId'];
+                    if ($currentContentCategorySelected || $newContentCategorySelected) {
+                        $selected = ' selected="selected"';
+                    }
                     ?>
-                    <option value="<?php echo $cat->getId(); ?>"<?php if ($content && $content->getContentCategory() && $cat->getId() == $content->getContentCategory()->getId()) {
-                        echo ' selected="selected"';
-                    } ?>><?php echo $cat->getName(); ?></option><?php
+                    <option value="<?php echo $cat->getId(); ?>"<?php echo $selected; ?>><?php echo $cat->getName(); ?></option><?php
                 }
                 ?>
             </select>
@@ -51,10 +54,25 @@ $categories = $vars['categories'];
 
         <?php echo $contentType->form($content ? $content->getId() : null); ?>
 
-        <button type="submit" class="uk-button uk-button-success uk-margin-top uk-margin-top">
+        <button type="submit" name="action" value="save" class="uk-button uk-button-success uk-margin-top uk-margin-top">
             <i class="uk-icon-check"></i>
             <?php echo $this->translate('save'); ?>
         </button>
+
+        <button type="submit" name="action" value="save_and_new" class="uk-button uk-button-success uk-margin-top uk-margin-top">
+            <i class="uk-icon-plus"></i>
+            <?php echo $this->translate('save_and_new'); ?>
+        </button>
+
+        <button type="submit" name="action" value="save_and_close" class="uk-button uk-button-success uk-margin-top uk-margin-top">
+            <i class="uk-icon-times"></i>
+            <?php echo $this->translate('save_and_close'); ?>
+        </button>
+
+        <a href="<?php echo (int) $_GET['categoryId'] ? $this->getUrl('content_category', ['categoryId' => (int) $_GET['categoryId']]) : $this->getUrl('index'); ?>" class="uk-button uk-button-danger uk-margin-top uk-margin-top">
+            <i class="uk-icon-times"></i>
+            <?php echo $this->translate('close'); ?>
+        </a>
     </form>
 
 <?php include 'footer.php'; ?>

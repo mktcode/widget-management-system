@@ -19,6 +19,8 @@ content.delete.title: Löschen bestätigen
 content.delete.text: Möchten Sie diesen Inhalt wirklich löschen?
 content.delete.cancel: Nein!
 content.delete.confirm: Ja, jetzt löschen!
+content.deleted: Inhalt gelöscht!
+content.category.deleted: Kategorie gelöscht!
 content.category.delete.text1: Möchten Sie diese Kategorie wirklich löschen?
 content.category.delete.text2: "Inhalte in dieser Kategorie: <b>%contents_count%</b> (Einschließlich Unterkategorien)"
 content.category.delete.text3: Es werden alle Inhalte, Unterkategorien und deren Inhalte gelöscht!
@@ -40,3 +42,6 @@ cache.cleared: Cache gelöscht!
 page.view: Seite ansehen
 logout: Logout
 save: Speichern
+save_and_new: Speichern & Neu
+save_and_close: Speichern & Schließen
+close: Schließen

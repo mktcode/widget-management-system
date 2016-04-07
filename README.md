@@ -150,6 +150,7 @@ Meta Tags
 Robots.txt
 Cache automatisch löschen bei Änderungen
 Import/Export
+System zurücksetzen
 Löschen/Bearbeiten von Dateien absichern (auf Web-Verzeichnis beschränken)
 Komplettes Dateimanagement für HTML/CSS/JS
 Dokumentation vervollständigen

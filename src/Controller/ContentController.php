@@ -48,6 +48,7 @@ class ContentController extends Controller
      * Shows the dialog for a new content and calls the save method of the content type if data is posted.
      *
      * @param $contentTypeId
+     * @param null $contentId
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function formAction($contentTypeId, $contentId = null)
@@ -86,10 +87,21 @@ class ContentController extends Controller
 
             $this->getSession()->getFlashBag()->add('success', $this->translate('content.content_saved'));
 
-            return new RedirectResponse($this->getUrl('content_form', [
-                'contentTypeId' => $contentTypeId,
-                'contentId' => $content->getId()
-            ]));
+            switch ($_POST['action']) {
+                case 'save_and_new':
+                    return $content->getContentCategory()
+                        ? new RedirectResponse($this->getUrl('content_form', ['contentTypeId' => $contentTypeId, 'categoryId' => $content->getContentCategory()->getId()]))
+                        : new RedirectResponse($this->getUrl('content_form', ['contentTypeId' => $contentTypeId]));
+                case 'save_and_close':
+                    return $content->getContentCategory()
+                        ? new RedirectResponse($this->getUrl('content_category', ['categoryId' => $content->getContentCategory()->getId()]))
+                        : new RedirectResponse($this->getUrl('index'));
+                default:
+                    return new RedirectResponse($this->getUrl('content_form', [
+                        'contentTypeId' => $contentTypeId,
+                        'contentId' => $content->getId()
+                    ]));
+            }
         }
 
         return $this->render([
@@ -119,7 +131,7 @@ class ContentController extends Controller
         $this->getEntityManager()->remove($content);
         $this->getEntityManager()->flush();
 
-        $this->getSession()->getFlashBag()->add('success', 'Inhalt gelöscht!');
+        $this->getSession()->getFlashBag()->add('success', $this->translate('content.deleted'));
 
         return new RedirectResponse($this->getUrl('index'));
     }
@@ -175,7 +187,14 @@ class ContentController extends Controller
 
             $this->getSession()->getFlashBag()->add('success', $this->translate('content.category_saved'));
 
-            return new RedirectResponse($this->getUrl('content_category_form', ['categoryId' => $category->getId()]));
+            switch ($_POST['action']) {
+                case 'save_and_new':
+                    return new RedirectResponse($this->getUrl('content_category_form'));
+                case 'save_and_close':
+                    return new RedirectResponse($this->getUrl('content_category', ['categoryId' => $category->getId()]));
+                default:
+                    return new RedirectResponse($this->getUrl('content_category_form', ['categoryId' => $category->getId()]));
+            }
         }
 
         return $this->render([
@@ -194,7 +213,7 @@ class ContentController extends Controller
     {
         $this->deleteCategoriesRecursive($categoryId);
 
-        $this->getSession()->getFlashBag()->add('success', 'Kategorie gelöscht!');
+        $this->getSession()->getFlashBag()->add('success', $this->translate('content.category.deleted'));
 
         return new RedirectResponse($this->getUrl('index'));
     }

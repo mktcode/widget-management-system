@@ -19,6 +19,8 @@ content.delete.title: Confirm deleting
 content.delete.text: Do you really want to delete this content?
 content.delete.cancel: No!
 content.delete.confirm: Yes, delete now!
+content.deleted: Content deleted!
+content.category.deleted: Category deleted!
 content.category.delete.text1: Do you really want to delete this category?
 content.category.delete.text2: "Contents in this category: <b>%contents_count%</b> (Including subcategories)"
 content.category.delete.text3: All contents, subcategories and their contents will be deleted!
@@ -40,3 +42,6 @@ cache.cleared: Cache cleared!
 page.view: View page
 logout: Logout
 save: Save
+save_and_new: Save & New
+save_and_close: Save & Close
+close: Close
