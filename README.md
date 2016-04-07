@@ -149,6 +149,9 @@ Snippet-Tags mit Kategorie/Titel
 Meta Tags
 Robots.txt
 Cache automatisch löschen bei Änderungen
+Import/Export
+Löschen/Bearbeiten von Dateien absichern (auf Web-Verzeichnis beschränken)
+Komplettes Dateimanagement für HTML/CSS/JS
 Dokumentation vervollständigen
 Landingpage
 Demoinstallation
