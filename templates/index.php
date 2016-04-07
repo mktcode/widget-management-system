@@ -70,7 +70,7 @@ if (count($vars['categories'])) {
     /** @var ContentCategory $cat */
     foreach ($vars['categories'] as $cat) {
         ?><a href="<?php echo $this->getUrl('content_category', ['categoryId' => $cat->getId()]); ?>"
-             class="uk-button uk-button-large">
+             class="uk-button uk-button-large uk-margin-small-top uk-margin-small-bottom">
         <i class="uk-icon-folder"></i>
         <?php echo $cat->getName(); ?>
         <span class="uk-badge uk-badge-success">
@@ -79,7 +79,7 @@ if (count($vars['categories'])) {
         </a> <?php
     }
     ?>
-    <hr><?php
+    <hr class="uk-margin-top"><?php
 }
 
 if (count($vars['contents'])) {

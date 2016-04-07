@@ -116,12 +116,6 @@
             if ($this->isAdmin()) {
                 ?>
                 <li>
-                    <a href="<?php echo $this->getUrl('content_types'); ?>" data-uk-tooltip
-                       title="<?php echo $this->translate('content.new_content'); ?>">
-                        <i class="uk-icon-plus uk-icon-small"></i>
-                    </a>
-                </li>
-                <li>
                 <a href="<?php echo $this->getUrl('files'); ?>" data-uk-tooltip
                    title="<?php echo $this->translate('file.files'); ?>">
                     <i class="uk-icon-file-code-o uk-icon-small"></i>

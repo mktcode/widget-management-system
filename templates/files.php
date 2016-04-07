@@ -29,7 +29,7 @@ include 'header.php';
 
 if ($vars['dir'] || $vars['finder']->count()) {
     if ($vars['dir']) {
-        ?><a class="uk-button" href="<?php echo $this->getUrl('files'); ?>">/</a> <?php
+        ?><a class="uk-button uk-margin-small-top" href="<?php echo $this->getUrl('files'); ?>">/</a> <?php
     }
 
     $path = '';
@@ -37,12 +37,12 @@ if ($vars['dir'] || $vars['finder']->count()) {
     foreach ($subdirs as $subdir) {
         $path .= '/' . $subdir;
         if (end($subdirs) !== $subdir) {
-            ?><a class="uk-button" href="<?php echo $this->getUrl(
+            ?><a class="uk-button uk-margin-small-top" href="<?php echo $this->getUrl(
                 'files',
                 ['dir' => trim($path, '/')]
             ); ?>"><?php echo $subdir; ?></a> <?php
         } else {
-            echo '<button class="uk-button" disabled>' . $subdir . '</button>';
+            echo '<button class="uk-button uk-margin-small-top" disabled>' . $subdir . '</button>';
         }
     }
     ?>
@@ -51,10 +51,10 @@ if ($vars['dir'] || $vars['finder']->count()) {
             <th>
                 <?php echo $this->translate('file.table.columns.file'); ?>
             </th>
-            <th>
+            <th style="width: 40px;">
                 <?php echo $this->translate('file.table.columns.type'); ?>
             </th>
-            <th></th>
+            <th style="width: 40px;"></th>
         </tr>
         <?php
         /** @var Symfony\Component\Finder\SplFileInfo $file */
@@ -76,10 +76,10 @@ if ($vars['dir'] || $vars['finder']->count()) {
                 }
                 ?>
             </td>
-            <td style="width: 50px; line-height: 30px;">
+            <td style="line-height: 30px;">
                 <?php echo strtoupper($file->getExtension()); ?>
             </td>
-            <td class="uk-text-right" style="width: 80px;">
+            <td class="uk-text-right">
                 <?php
                 if (!$file->isDir()) {
                     ?>
