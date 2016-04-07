@@ -145,11 +145,11 @@ Twig Support
 CodeMirror Syntax Highlighting je nach Datei
 Analytics Block
 Formular Block
+Snippet-Tags mit Kategorie/Titel
 Meta Tags
 Robots.txt
-Session Service implementieren (für flash messages etc.)
-Users from Datebase
-Admin- und Redakteurs-Rechte
-i18n
 Cache automatisch löschen bei Änderungen
 Dokumentation vervollständigen
+Landingpage
+Demoinstallation
+Tutorial Video
