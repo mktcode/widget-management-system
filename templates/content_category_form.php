@@ -36,9 +36,10 @@ $categories = $vars['categories'];
                     ) {
                         continue;
                     }
-                    $selected = $category && $category->getParent() && $cat->getId() == $category->getParent()->getId();
+                    $currentParentSelected = $category && $category->getParent() && $cat->getId() == $category->getParent()->getId();
+                    $newParentSelected = !$category && (int) $_GET['parentId'] == $cat->getId();
                     ?>
-                    <option value="<?php echo $cat->getId(); ?>"<?php if ($selected) {
+                    <option value="<?php echo $cat->getId(); ?>"<?php if ($currentParentSelected || $newParentSelected) {
                         echo ' selected="selected"';
                     } ?>><?php echo $cat->getName(); ?></option><?php
                 }

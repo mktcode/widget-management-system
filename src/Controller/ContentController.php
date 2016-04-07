@@ -133,7 +133,9 @@ class ContentController extends Controller
 
         $this->getSession()->getFlashBag()->add('success', $this->translate('content.deleted'));
 
-        return new RedirectResponse($this->getUrl('index'));
+        return $content->getContentCategory()
+            ? new RedirectResponse($this->getUrl('content_category', ['categoryId' => $content->getContentCategory()->getId()]))
+            : new RedirectResponse($this->getUrl('index'));
     }
 
     /**

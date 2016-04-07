@@ -20,7 +20,7 @@ if ($this->isAdmin()) {
         </a>
     </div>
     <div class="uk-text-center">
-        <a href="<?php echo $this->getUrl('content_category_form'); ?>"
+        <a href="<?php echo $vars['category'] ? $this->getUrl('content_category_form', ['parentId' => $vars['category']->getId()]) : $this->getUrl('content_category_form'); ?>"
            class="uk-button uk-button-success uk-button-large<?php echo !count(
                $vars['contents']
            ) && !$vars['category'] && !$vars['categories'] ? ' button-huge' : ''; ?> uk-margin-top uk-width-1-1">
