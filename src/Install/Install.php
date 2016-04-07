@@ -19,11 +19,13 @@ class Install
     {
         $fs = new Filesystem();
         try {
+            // check cache directory
             $cacheDir = __DIR__ . '/../cache';
             $testfile = $cacheDir . '/test';
             $fs->dumpFile($testfile, 'test');
             $fs->remove($testfile);
 
+            // generate doctrine proxies
             $event->getIO()->write("<info>Writing doctrine entity proxies...</info>\n");
             exec('php vendor/bin/doctrine orm:generate:proxies');
         } catch (Exception $e) {
