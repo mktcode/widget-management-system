@@ -51,6 +51,7 @@ class FileController extends Controller
         if ($_POST) {
             $fs = new Filesystem();
             $fs->dumpFile(__DIR__ . '/../../web/' . $file, $_POST['file']);
+            $this->getService('cache')->clear();
 
             $this->getSession()->getFlashBag()->add('success', $this->translate('file.saved'));
         }
@@ -71,6 +72,7 @@ class FileController extends Controller
         $absPath = __DIR__ . '/../../web/' . $file;
         if ($fs->exists($absPath)) {
             $fs->remove($absPath);
+            $this->getService('cache')->clear();
         }
 
         if ($_SERVER['HTTP_REFERER']) {
@@ -87,8 +89,7 @@ class FileController extends Controller
      */
     public function clearCacheAction()
     {
-        $fs = new Filesystem();
-        $fs->remove(glob(__DIR__ . '/../../cache/frontend/*'));
+        $this->getService('cache')->clear();
 
         $this->getSession()->getFlashBag()->add('success', $this->translate('cache.cleared'));
 

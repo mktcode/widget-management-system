@@ -85,6 +85,9 @@ class ContentController extends Controller
             // call type specific save method
             $contentType->save($content->getId(), $_POST);
 
+            // clear cache
+            $this->getService('cache')->clear();
+
             $this->getSession()->getFlashBag()->add('success', $this->translate('content.content_saved'));
 
             switch ($_POST['action']) {
@@ -131,6 +134,9 @@ class ContentController extends Controller
         $this->getEntityManager()->remove($content);
         $this->getEntityManager()->flush();
 
+        // clear cache
+        $this->getService('cache')->clear();
+
         $this->getSession()->getFlashBag()->add('success', $this->translate('content.deleted'));
 
         return $content->getContentCategory()
@@ -152,6 +158,9 @@ class ContentController extends Controller
         $content->setActive(!$content->isActive());
 
         $this->getEntityManager()->flush();
+
+        // clear cache
+        $this->getService('cache')->clear();
 
         return new JsonResponse(['active' => $content->isActive()]);
     }
@@ -187,6 +196,9 @@ class ContentController extends Controller
 
             $this->getEntityManager()->flush();
 
+            // clear cache
+            $this->getService('cache')->clear();
+
             $this->getSession()->getFlashBag()->add('success', $this->translate('content.category_saved'));
 
             switch ($_POST['action']) {
@@ -214,6 +226,9 @@ class ContentController extends Controller
     public function categoryDeleteAction($categoryId)
     {
         $this->deleteCategoriesRecursive($categoryId);
+
+        // clear cache
+        $this->getService('cache')->clear();
 
         $this->getSession()->getFlashBag()->add('success', $this->translate('content.category.deleted'));
 

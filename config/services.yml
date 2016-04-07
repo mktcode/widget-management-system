@@ -37,6 +37,9 @@ services:
     frontend:
         class: App\Service\Frontend
 
+    cache:
+        class: App\Service\Cache
+
 
     #####################
     ### Content Types ###
