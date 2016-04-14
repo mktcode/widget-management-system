@@ -56,3 +56,7 @@ services:
     facebook_like_box:
         class: App\ContentType\FacebookLikeBox\FacebookLikeBox
         tags: [{name: content_type}]
+
+    facebook_events:
+        class: App\ContentType\FacebookEvents\FacebookEvents
+        tags: [{name: content_type}]

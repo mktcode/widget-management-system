@@ -47,7 +47,7 @@
         <div class="uk-form-row uk-text-left">
             <small><?php echo $this->translate('login.username'); ?>:</small><br>
             <input class="uk-width-1-1 uk-form-large" type="text" placeholder="<?php echo $this->translate('login.username'); ?>" name="user"
-                   value="<?php echo $_POST['user']; ?>" autofocus>
+                   value="<?php if(isset( $_POST['user'])) echo $_POST['user']; ?>" autofocus>
         </div>
         <div class="uk-form-row uk-text-left">
             <small><?php echo $this->translate('login.password'); ?>:</small><br>

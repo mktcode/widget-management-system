@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+error_reporting(2);
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Service\ContentTypeCompilerPass;
