@@ -157,3 +157,4 @@ Dokumentation vervollständigen
 Landingpage
 Demoinstallation
 Tutorial Video
+Sichere Backend-Passwörter beim Installieren generieren
