@@ -31,4 +31,14 @@ class FacebookEvents extends ContentType{
     {
         return 'Facebook Events';
     }
-} 
+
+    /**
+     * Returns possible css classes for the button.
+     *
+     * @return string
+     */
+    public function getButtonClasses()
+    {
+        return 'button-facebook';
+    }
+}
