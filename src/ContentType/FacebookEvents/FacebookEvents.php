@@ -11,7 +11,7 @@ namespace App\ContentType\FacebookEvents;
 
 use App\ContentType\ContentType;
 
-class FacebookEvents extends ContentType{
+class FacebookEvents extends ContentType {
     /**
      * Returns the icon class for the button.
      *
