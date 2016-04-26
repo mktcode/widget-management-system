@@ -2,16 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: Tim Strakerjahn
- * Date: 13.04.16
- * Time: 15:07
+ * Date: 18.04.16
+ * Time: 10:13
  */
 
-namespace App\ContentType\FacebookEvents;
-
+namespace App\ContentType\FacebookFeed;
 
 use App\ContentType\ContentType;
 
-class FacebookEvents extends ContentType {
+class FacebookFeed extends ContentType{
     /**
      * Returns the icon class for the button.
      *
@@ -29,7 +28,7 @@ class FacebookEvents extends ContentType {
      */
     public function getLabel()
     {
-        return 'Facebook Events';
+        return 'Facebook Feed';
     }
 
     /**
@@ -41,4 +40,4 @@ class FacebookEvents extends ContentType {
     {
         return 'button-facebook';
     }
-}
+} 

@@ -10,9 +10,15 @@ include 'header.php'; ?>
         <?php
         /** @var ContentType $contentType */
         foreach ($vars['contentTypes'] as $contentTypeId => $contentType) {
-            $newLink = (int) $_GET['categoryId']
-                ? $this->getUrl('content_form', ['contentTypeId' => $contentTypeId, 'categoryId' => (int) $_GET['categoryId']])
-                : $this->getUrl('content_form', ['contentTypeId' => $contentTypeId]);
+            if(isset($_GET['categoryId']))
+            {
+                $newLink =$this->getUrl('content_form', ['contentTypeId' => $contentTypeId, 'categoryId' => (int) $_GET['categoryId']]);
+            }
+            else
+            {
+                $newLink =$this->getUrl('content_form', ['contentTypeId' => $contentTypeId]);
+            }
+
             ?>
             <div class="uk-width-medium-1-3">
             <a href="<?php echo $newLink; ?>"

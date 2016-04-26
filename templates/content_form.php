@@ -69,7 +69,7 @@ $categories = $vars['categories'];
             <?php echo $this->translate('save_and_close'); ?>
         </button>
 
-        <a href="<?php echo (int) $_GET['categoryId'] ? $this->getUrl('content_category', ['categoryId' => (int) $_GET['categoryId']]) : $this->getUrl('index'); ?>" class="uk-button uk-button-danger uk-margin-top uk-margin-top">
+        <a href="<?php echo (int) isset($_GET['categoryId']) ? $this->getUrl('content_category', ['categoryId' => (int) $_GET['categoryId']]) : $this->getUrl('index'); ?>" class="uk-button uk-button-danger uk-margin-top uk-margin-top">
             <i class="uk-icon-times"></i>
             <?php echo $this->translate('close'); ?>
         </a>

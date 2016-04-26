@@ -60,3 +60,19 @@ services:
     facebook_events:
         class: App\ContentType\FacebookEvents\FacebookEvents
         tags: [{name: content_type}]
+
+    facebook_galerie:
+        class: App\ContentType\FacebookGalerie\FacebookGalerie
+        tags: [{name: content_type}]
+
+    facebook_video:
+        class: App\ContentType\FacebookVideo\FacebookVideo
+        tags: [{name: content_type}]
+
+    facebook_video_galerie:
+        class: App\ContentType\FacebookVideoGalerie\FacebookVideoGalerie
+        tags: [{name: content_type}]
+
+    facebook_reviews:
+        class: App\ContentType\FacebookFeed\FacebookFeed
+        tags: [{name: content_type}]
