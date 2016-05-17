@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.25.0/css/components/tooltip.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.12.0/codemirror.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.26.2/css/components/datepicker.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.26.2/css/components/form-advanced.css"/>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.25.0/js/uikit.min.js"></script>
@@ -51,7 +52,7 @@
         }
 
         .button-instagram {
-            background-color: #32628A;
+            background-color: #3f729b;
             color: #fff;
         }
 
@@ -59,6 +60,35 @@
         .button-instagram:active,
         .button-instagram:focus {
             background-color: #43739B;
+            color: #fff;
+        }
+
+        .button-twitter {
+            background-color: #55acee;
+            color: #fff;
+        }
+
+        .button-twitter:hover,
+        .button-twitter:active,
+        .button-twitter:focus {
+            background-color: #00405d;
+            color: #fff;
+        }
+
+        .button-whatsapp {
+            background-color: #25D366;
+            color: #fff;
+        }
+
+        .button-youtube {
+            background-color: #cd201f;
+            color: #fff;
+        }
+
+        .button-youtube:hover,
+        .button-youtube:active,
+        .button-youtube:focus {
+            background-color: #e24141;
             color: #fff;
         }
 
@@ -71,6 +101,18 @@
         .button-whatsapp:active,
         .button-whatsapp:focus {
             background-color: #36E477;
+            color: #fff;
+        }
+
+        .button-soundcloud {
+            background-color: #ff3300;
+            color: #fff;
+        }
+
+        .button-soundcloud:hover,
+        .button-soundcloud:active,
+        .button-soundcloud:focus {
+            background-color: #ff8800;
             color: #fff;
         }
 
@@ -98,6 +140,8 @@
         .uk-navbar-nav > li > a {
             color: <?php echo $this->getParameter('backend.color'); ?>;
         }
+
+
     </style>
 </head>
 <body>

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "36d4185f5fbd8b5d3a680baec33f3d15",
-    "content-hash": "86235ea65ae05381e986fa2a2b56db2c",
+    "hash": "10feb3c85f6580a249529236146b1d52",
+    "content-hash": "6fcc7aa63ed37dca1b630f7e4f279281",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -711,6 +711,52 @@
                 "parameters management"
             ],
             "time": "2015-11-10 17:04:01"
+        },
+        {
+            "name": "mashape/unirest-php",
+            "version": "v3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mashape/unirest-php.git",
+                "reference": "c01f685e3b29fb520263e9a850d2cbd14d33a635"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mashape/unirest-php/zipball/c01f685e3b29fb520263e9a850d2cbd14d33a635",
+                "reference": "c01f685e3b29fb520263e9a850d2cbd14d33a635",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "0.1.*",
+                "phpunit/phpunit": "~4.4"
+            },
+            "suggest": {
+                "ext-json": "Allows using JSON Bodies for sending and parsing requests"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Unirest": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Unirest PHP",
+            "homepage": "https://github.com/Mashape/unirest-php",
+            "keywords": [
+                "client",
+                "curl",
+                "http",
+                "https",
+                "rest"
+            ],
+            "time": "2016-03-23 04:18:08"
         },
         {
             "name": "psr/log",

@@ -157,8 +157,20 @@ abstract class ContentType
     public function save($contentId, $data = [])
     {
         $content = $this->database->getLoader('App\Entity\Content')->load(['id' => $contentId]);
+        $contentData = $this->database->getLoader('App\Entity\ContentData')->loadAll(['content' => $contentId]);
+
+        //Delete current data
+
+        foreach ($contentData as $item) {
+            $this->database->em->remove($item);
+        }
+
+        $this->database->em->flush();
+
+        //Save new data
+
         foreach ($data as $key => $value) {
-            if ($key == 'title') continue;
+            if ($key == 'title') continue; //@TODO buttons ausklammern
             $contentData = $this->database->getLoader('App\Entity\ContentData')->load(['content' => $contentId, 'dataKey' => $key]);
             if (!$contentData) {
                 $contentData = new ContentData();

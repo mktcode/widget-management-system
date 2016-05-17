@@ -76,3 +76,28 @@ services:
     facebook_reviews:
         class: App\ContentType\FacebookFeed\FacebookFeed
         tags: [{name: content_type}]
+
+    instagram_gallery:
+        class: App\ContentType\InstagramGallery\InstagramGallery
+        tags: [{name: content_type}]
+
+    instagram_photo:
+        class: App\ContentType\InstagramPhoto\InstagramPhoto
+        tags: [{name: content_type}]
+
+    instagram_button:
+        class: App\ContentType\InstagramButton\InstagramButton
+        tags: [{name: content_type}]
+
+    twitter_tweet:
+        class: App\ContentType\TwitterTweet\TwitterTweet
+        tags: [{name: content_type}]
+
+    youtube_video:
+        class: App\ContentType\YouTubeVideo\YouTubeVideo
+        tags: [{name: content_type}]
+
+    soundcloud_player:
+        class: App\ContentType\SoundCloudPlayer\SoundCloudPlayer
+        tags: [{name: content_type}]
+
