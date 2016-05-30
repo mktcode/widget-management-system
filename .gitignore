@@ -3,6 +3,7 @@ vendor
 web/*
 !web/backend.php
 !web/frontend.php
+!web/.htaccess
 config/config.yml
 cache/doctrine/*
 cache/frontend/*

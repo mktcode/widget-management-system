@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_URI} !^/backend.php
+    RewriteRule (.+)\.html$ /frontend.php [L]
+</IfModule>
