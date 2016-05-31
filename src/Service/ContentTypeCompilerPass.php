@@ -25,10 +25,11 @@ class ContentTypeCompilerPass implements CompilerPassInterface
         $config = $container->findDefinition('config');
         $database = $container->findDefinition('database');
         $routing = $container->findDefinition('routing');
+        $translator = $container->findDefinition('translator');
 
         foreach ($contentTypes as $id => $tags) {
             $definition = $container->findDefinition($id);
-            $definition->addMethodCall('setServices', [$config, $database, $routing]);
+            $definition->addMethodCall('setServices', [$config, $database, $routing, $translator]);
         }
     }
 }

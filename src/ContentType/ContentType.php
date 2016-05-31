@@ -13,6 +13,7 @@ use App\Entity\ContentData;
 use App\Service\Config;
 use App\Service\Database;
 use App\Service\Routing;
+use App\Service\Translator;
 
 abstract class ContentType
 {
@@ -32,6 +33,11 @@ abstract class ContentType
     protected $routing;
 
     /**
+     * @var Translator
+     */
+    protected $translator;
+
+    /**
      * Returns the name of the extending class without the namespace.
      *
      * @return mixed
@@ -48,11 +54,12 @@ abstract class ContentType
      * @param Database $database
      * @param Routing $routing
      */
-    public function setServices(Config $config, Database $database, Routing $routing)
+    public function setServices(Config $config, Database $database, Routing $routing, Translator $translator)
     {
         $this->config = $config;
         $this->database = $database;
         $this->routing = $routing;
+        $this->translator = $translator;
     }
 
     /**
@@ -183,5 +190,16 @@ abstract class ContentType
         $this->database->em->flush();
 
         return true;
+    }
+
+    /**
+     * Translates a string by key.
+     *
+     * @param $key
+     * @return string
+     */
+    public function translate($key, $parameters = [])
+    {
+        return $this->translator->trans($key, $parameters);
     }
 }
