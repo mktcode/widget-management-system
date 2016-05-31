@@ -1,5 +1,27 @@
 <IfModule mod_rewrite.c>
     RewriteEngine on
+    RewriteBase /
+
+#    Uncomment the following lines if you want to remove the .html-extension
+#    from the url, so that example.org/team/john.html becomes example.org/team/john.
+
+#    # redirect /index to /
+#    RewriteCond %{REQUEST_FILENAME} !-d
+#    RewriteCond %{REQUEST_FILENAME} !-f
+#    RewriteRule ^(.*)/index$ /$1 [R,L]
+#
+#    # extend html extension internally
+#    RewriteCond %{REQUEST_FILENAME}.html -f
+#    RewriteRule ^ %{REQUEST_URI}.html [L]
+#
+#    # redirect example.html to example to avoid dublicate content (seo issue)
+#    RewriteCond %{REQUEST_FILENAME} !-d
+#    RewriteCond %{REQUEST_FILENAME} -f
+#    RewriteCond %{THE_REQUEST} "\.html"
+#    RewriteRule ^(.*)\.html$ /$1 [R,L]
+
+    # frontcontroller
+    RewriteCond %{REQUEST_FILENAME} -f
     RewriteCond %{REQUEST_URI} !^/backend.php
-    RewriteRule (.+)\.html$ /frontend.php [L]
+    RewriteRule .\.html$ /frontend.php [L]
 </IfModule>

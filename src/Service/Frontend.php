@@ -45,7 +45,10 @@ class Frontend
 
         $this->uri = strtok($uri, '?');
         if (substr($this->uri, -1) == '/') $this->uri .= 'index.html';
+        if (substr($this->uri, -5) != '.html') $this->uri .= '.html';
         $this->file = __DIR__ . '/../../web' . $this->uri;
+
+        # fallback check for missing file, although mod_rewrite should take care of this
         if (!$this->fs->exists($this->file)) {
             header("HTTP/1.0 404 Not Found");
             echo '<h1>404 Not Found</h1>';
