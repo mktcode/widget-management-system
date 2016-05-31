@@ -30,8 +30,9 @@ Die beiden Frontcontroller für das Backend und Frontend (`web/backend.php` und 
             ServerName website.tld
             DocumentRoot /path/to/web
             RewriteEngine on
+            RewriteCond %{REQUEST_FILENAME} -f
             RewriteCond %{REQUEST_URI} !^/backend.php
-            RewriteRule (.+)\.html$ /frontend.php [L]
+            RewriteRule .\.html$ /frontend.php [L]
     </VirtualHost>
 
 Das `DocumentRoot` muss das web-Verzeichnis der Installation sein.

@@ -4,4 +4,4 @@ admin: # Benutzername
 
 editor: # Benutzername
     password: 5aee9dbd2a188839105073571bee1b1f # md5(editor)
-    role: editor #Rolle
+    role: editor # Rolle
