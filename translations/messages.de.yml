@@ -45,3 +45,5 @@ save: Speichern
 save_and_new: Speichern & Neu
 save_and_close: Speichern & Schließen
 close: Schließen
+
+widgets.search.placeholder: Suche

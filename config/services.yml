@@ -53,6 +53,10 @@ services:
         class: App\ContentType\Html\Html
         tags: [{name: content_type}]
 
+    search:
+        class: App\ContentType\Search\Search
+        tags: [{name: content_type}]
+
     facebook_like_box:
         class: App\ContentType\FacebookLikeBox\FacebookLikeBox
         tags: [{name: content_type}]
