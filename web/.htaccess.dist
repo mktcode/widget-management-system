@@ -4,6 +4,10 @@
 
 #    Uncomment the following lines if you want to remove the .html-extension
 #    from the url, so that example.org/team/john.html becomes example.org/team/john.
+#    NOTE: This leads to a conflict between a directory /example and a file /example.html.
+#    In this case the directory has a higher priority. So if you have /example (directory) and /example.html (file)
+#    Then /example/index.html will be used. If /example/index.html doesn't exist you will get a 404 error
+#    even if /example.html exists.
 
 #    # redirect /index to /
 #    RewriteCond %{REQUEST_FILENAME} !-d
