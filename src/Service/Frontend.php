@@ -10,6 +10,7 @@ namespace App\Service;
 
 
 use App\Entity\Content;
+use App\Entity\ContentCategory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -64,13 +65,32 @@ class Frontend
     public function replaceSnippets()
     {
         $this->html = file_get_contents($this->file);
-        $contents = $this->services->get('database')->getLoader('App\Entity\Content')->loadAll();
 
+        // single contents
+        $contents = $this->services->get('database')->getLoader('App\Entity\Content')->loadAll();
         /** @var Content $content */
         foreach ($contents as $content) {
             if ($content->isActive() && strpos($this->html, $content->getHash()) !== false) {
                 $type = $this->services->get($content->getType());
                 $this->html = str_replace('<!--' . $content->getHash() . '-->', $type->render($content->getId()), $this->html);
+            }
+        }
+
+        // categories
+        $contentCategories = $this->services->get('database')->getLoader('App\Entity\ContentCategory')->loadAll();
+        /** @var ContentCategory $category */
+        foreach ($contentCategories as $category) {
+            if (strpos($this->html, $category->getHash()) !== false) {
+                $categoryHtml = '';
+                /** @var Content $content */
+                foreach ($category->getContents() as $content) {
+                    if ($content->isActive()) {
+                        $type = $this->services->get($content->getType());
+                        $categoryHtml .= $type->render($content->getId());
+                    }
+                }
+
+                $this->html = str_replace('<!--' . $category->getHash() . '-->', $categoryHtml, $this->html);
             }
         }
     }

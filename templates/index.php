@@ -57,7 +57,17 @@ if ($vars['category']) {
            data-uk-tooltip title="<?php echo $this->translate('content.delete_category'); ?>"
            data-uk-modal>
             <i class="uk-icon-trash"></i>
-        </a><?php
+        </a>
+        <span class="uk-float-right uk-text-right" style="line-height: 20px;">
+            <small><small>
+                <?php echo $this->translate('content.category_snippet'); ?>
+                <i class="uk-icon-question-circle" data-uk-tooltip
+                   title="<?php echo $this->translate('content.category_snippet.tooltip'); ?>"></i>
+            </small></small><br>
+            <input class="snippet-input" onclick="this.select();"
+                   value="&lt;!--<?php echo $vars['category']->getHash(); ?>--&gt;"/>
+        </span>
+        <?php
     }
     ?>
     </h2>

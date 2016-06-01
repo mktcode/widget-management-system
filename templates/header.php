@@ -118,9 +118,14 @@
 
         .snippet-input {
             border: none;
-            width: 100%;
+            outline: none;
             color: #d05;
             background: transparent;
+            min-width: 260px;
+        }
+
+        table .snippet-input {
+            width: 100%;
         }
 
         .CodeMirror {
