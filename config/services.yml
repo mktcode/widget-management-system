@@ -61,7 +61,7 @@ services:
         class: App\ContentType\Search\Search
         tags:
             - {name: content_type}
-            - {name: kernel.event_listener, event: request.post, method: onPost}
+            - {name: kernel.event_listener, event: request.post}
 
     facebook_like_box:
         class: App\ContentType\FacebookLikeBox\FacebookLikeBox

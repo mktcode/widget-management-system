@@ -44,7 +44,7 @@ class Search extends ContentType
         return 'uk-button-success';
     }
 
-    public function onPost(PostEvent $event)
+    public function onRequestPost(PostEvent $event)
     {
         var_dump($event->getPostData());
         die();
