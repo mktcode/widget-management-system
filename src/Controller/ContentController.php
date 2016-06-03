@@ -182,10 +182,12 @@ class ContentController extends Controller
         }
 
         if ($_POST) {
-            // save content entity
+            // save category entity
             if (!$category) {
                 $category = new ContentCategory();
                 $this->getEntityManager()->persist($category);
+
+                $category->setHash(md5(time() . uniqid()));
             }
             $category->setName(trim($_POST['name']));
             /** @var ContentCategory $parent */

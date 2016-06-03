@@ -52,6 +52,12 @@ class ContentCategory
      */
     protected $parent;
 
+    /**
+     * @var string
+     * @Column(type="text", length=32)
+     */
+    protected $hash;
+
     public function __construct()
     {
         $this->children = new ArrayCollection();
@@ -128,5 +134,24 @@ class ContentCategory
     public function addChild(ContentCategory $child) {
         $this->children[] = $child;
         $child->setParent($this);
+    }
+
+    /**
+     * @return string
+     */
+    public function getHash()
+    {
+        return $this->hash;
+    }
+
+    /**
+     * @param string $hash
+     * @return $this
+     */
+    public function setHash($hash)
+    {
+        $this->hash = $hash;
+
+        return $this;
     }
 }

@@ -8,6 +8,8 @@ content.choose_category: Seleccione Categoría...
 content.category_parent: Padres Categoría
 content.category_saved: Categoría salvado!
 content.category_name_placeholder: Introduzca el nombre...
+content.category_snippet: Snippet
+content.category_snippet.tooltip: You can also include a whole category into your website. Then all active contents in this category will be displayed.
 content.table.columns.title: Título
 content.table.columns.title.text: El título no se mostrará en la página. Sirve sólo el nombre interno de contenido.
 content.table.columns.snippet: Snippet
