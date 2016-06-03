@@ -12,15 +12,18 @@
 #    # redirect /index to /
 #    RewriteCond %{REQUEST_FILENAME} !-d
 #    RewriteCond %{REQUEST_FILENAME} !-f
+#    RewriteCond %{REQUEST_URI} !^/backend.php
 #    RewriteRule ^(.*)/?index$ /$1 [R,L]
 #
 #    # extend html extension internally
 #    RewriteCond %{REQUEST_FILENAME}.html -f
+#    RewriteCond %{REQUEST_URI} !^/backend.php
 #    RewriteRule ^ %{REQUEST_URI}.html [L]
 #
 #    # redirect example.html to example to avoid dublicate content (seo issue)
 #    RewriteCond %{REQUEST_FILENAME} !-d
 #    RewriteCond %{REQUEST_FILENAME} -f
+#    RewriteCond %{REQUEST_URI} !^/backend.php
 #    RewriteCond %{THE_REQUEST} "\.html"
 #    RewriteRule ^(.*)\.html$ /$1 [R,L]
 
