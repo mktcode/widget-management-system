@@ -11,6 +11,7 @@ namespace App\Service;
 
 use App\Entity\Content;
 use App\Entity\ContentCategory;
+use App\Event\PostEvent;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -43,6 +44,11 @@ class Frontend
     {
         $this->services = $services;
         $this->fs = new Filesystem();
+
+        // dispatch events
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->services->get('event_dispatcher')->dispatch(PostEvent::NAME, new PostEvent($_POST));
+        }
 
         $this->uri = strtok($uri, '?');
         if (substr($this->uri, -1) == '/') $this->uri .= 'index.html';

@@ -10,6 +10,7 @@ namespace App\ContentType\Search;
 
 
 use App\ContentType\ContentType;
+use App\Event\PostEvent;
 
 class Search extends ContentType
 {
@@ -41,6 +42,12 @@ class Search extends ContentType
     public function getButtonClasses()
     {
         return 'uk-button-success';
+    }
+
+    public function onPost(PostEvent $event)
+    {
+        var_dump($event->getPostData());
+        die();
     }
 
 }
