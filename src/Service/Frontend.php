@@ -33,16 +33,18 @@ class Frontend
 
     private $html;
 
+    public function __construct(ContainerInterface $services)
+    {
+        $this->services = $services;
+    }
+
     /**
      * Checks if the file specified by the uri exists and sets related class properties.
      *
-     * @param $uri
-     * @param ContainerInterface $services
      * @return void
      */
-    public function init($uri, ContainerInterface $services)
+    public function init()
     {
-        $this->services = $services;
         $this->fs = new Filesystem();
 
         // dispatch events
@@ -50,7 +52,8 @@ class Frontend
             $this->services->get('event_dispatcher')->dispatch(PostEvent::NAME, new PostEvent($_POST));
         }
 
-        $this->uri = strtok($uri, '?');
+        // set file path by uri
+        $this->uri = strtok($_SERVER["REQUEST_URI"], '?');
         if (substr($this->uri, -1) == '/') $this->uri .= 'index.html';
         if (substr($this->uri, -5) != '.html') $this->uri .= '.html';
         $this->file = __DIR__ . '/../../web' . $this->uri;
@@ -60,44 +63,6 @@ class Frontend
             header("HTTP/1.0 404 Not Found");
             echo '<h1>404 Not Found</h1>';
             die();
-        }
-    }
-
-    /**
-     * Replaces the snippets in the html content.
-     *
-     * @return void
-     */
-    public function replaceSnippets()
-    {
-        $this->html = file_get_contents($this->file);
-
-        // single contents
-        $contents = $this->services->get('database')->getLoader('App\Entity\Content')->loadAll();
-        /** @var Content $content */
-        foreach ($contents as $content) {
-            if ($content->isActive() && strpos($this->html, $content->getHash()) !== false) {
-                $type = $this->services->get($content->getType());
-                $this->html = str_replace('<!--' . $content->getHash() . '-->', $type->render($content->getId()), $this->html);
-            }
-        }
-
-        // categories
-        $contentCategories = $this->services->get('database')->getLoader('App\Entity\ContentCategory')->loadAll();
-        /** @var ContentCategory $category */
-        foreach ($contentCategories as $category) {
-            if (strpos($this->html, $category->getHash()) !== false) {
-                $categoryHtml = '';
-                /** @var Content $content */
-                foreach ($category->getContents() as $content) {
-                    if ($content->isActive()) {
-                        $type = $this->services->get($content->getType());
-                        $categoryHtml .= $type->render($content->getId());
-                    }
-                }
-
-                $this->html = str_replace('<!--' . $category->getHash() . '-->', $categoryHtml, $this->html);
-            }
         }
     }
 
@@ -117,5 +82,43 @@ class Frontend
         }
 
         echo $this->html;
+    }
+
+    /**
+     * Replaces the snippets in the html content.
+     *
+     * @return void
+     */
+    public function replaceSnippets()
+    {
+        $this->html = file_get_contents($this->file);
+
+        // replace single contents
+        $contents = $this->services->get('database')->getLoader('App\Entity\Content')->loadAll();
+        /** @var Content $content */
+        foreach ($contents as $content) {
+            if ($content->isActive() && strpos($this->html, $content->getHash()) !== false) {
+                $type = $this->services->get($content->getType());
+                $this->html = str_replace('<!--' . $content->getHash() . '-->', $type->render($content->getId()), $this->html);
+            }
+        }
+
+        // replace categories
+        $contentCategories = $this->services->get('database')->getLoader('App\Entity\ContentCategory')->loadAll();
+        /** @var ContentCategory $category */
+        foreach ($contentCategories as $category) {
+            if (strpos($this->html, $category->getHash()) !== false) {
+                $categoryHtml = '';
+                /** @var Content $content */
+                foreach ($category->getContents() as $content) {
+                    if ($content->isActive()) {
+                        $type = $this->services->get($content->getType());
+                        $categoryHtml .= $type->render($content->getId());
+                    }
+                }
+
+                $this->html = str_replace('<!--' . $category->getHash() . '-->', $categoryHtml, $this->html);
+            }
+        }
     }
 }
