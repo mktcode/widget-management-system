@@ -15,10 +15,6 @@ services:
     session:
         class: Symfony\Component\HttpFoundation\Session\Session
 
-    event_dispatcher:
-        class: Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher
-        arguments: ['@service_container']
-
     config:
         class: App\Service\Config
 
@@ -57,12 +53,6 @@ services:
     html:
         class: App\ContentType\Html\Html
         tags: [{name: content_type}]
-
-    search:
-        class: App\ContentType\Search\Search
-        tags:
-            - {name: content_type}
-            - {name: kernel.event_listener, event: request.post}
 
     facebook_like_box:
         class: App\ContentType\FacebookLikeBox\FacebookLikeBox

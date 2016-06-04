@@ -47,11 +47,6 @@ class Frontend
     {
         $this->fs = new Filesystem();
 
-        // dispatch events
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->services->get('event_dispatcher')->dispatch(PostEvent::NAME, new PostEvent($_POST));
-        }
-
         // set file path by uri
         $this->uri = strtok($_SERVER["REQUEST_URI"], '?');
         if (substr($this->uri, -1) == '/') $this->uri .= 'index.html';

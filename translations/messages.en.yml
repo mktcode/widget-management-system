@@ -47,5 +47,3 @@ save: Save
 save_and_new: Save & New
 save_and_close: Save & Close
 close: Close
-
-widgets.search.placeholder: Search
