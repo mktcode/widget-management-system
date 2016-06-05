@@ -29,7 +29,15 @@ class Database
             ],
             Setup::createAnnotationMetadataConfiguration([__DIR__ . '/../Entity'], false, __DIR__ . '/../../cache/doctrine')
         );
+    }
 
+    public function getLoader($entity)
+    {
+        return $this->em->getUnitOfWork()->getEntityPersister($entity);
+    }
+
+    public function createSchema()
+    {
         if (!$this->em->getConnection()->getSchemaManager()->listTables()) {
             $tool = new SchemaTool($this->em);
             $tool->createSchema(
@@ -42,8 +50,15 @@ class Database
         }
     }
 
-    public function getLoader($entity)
+    public function dropSchema()
     {
-        return $this->em->getUnitOfWork()->getEntityPersister($entity);
+        $tool = new SchemaTool($this->em);
+        $tool->dropSchema(
+            [
+                $this->em->getClassMetadata('App\Entity\Content'),
+                $this->em->getClassMetadata('App\Entity\ContentData'),
+                $this->em->getClassMetadata('App\Entity\ContentCategory')
+            ]
+        );
     }
 } 

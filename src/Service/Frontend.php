@@ -68,12 +68,11 @@ class Frontend
      */
     public function output()
     {
-        $cacheFile = __DIR__ . '/../../cache/frontend' . $this->uri;
-        if ($this->fs->exists($cacheFile) && filemtime($cacheFile) > time() - $this->services->get('config')->get('cache.lifetime')) {
-            $this->html = file_get_contents($cacheFile);
+        if ($this->services->get('cache')->isCached($this->uri)) {
+            $this->html = $this->services->get('cache')->read($this->uri);
         } else {
             $this->replaceSnippets();
-            $this->fs->dumpFile($cacheFile, $this->html);
+            $this->services->get('cache')->write($this->uri, $this->html);
         }
 
         echo $this->html;
