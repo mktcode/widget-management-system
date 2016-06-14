@@ -151,7 +151,7 @@ class Controller implements ContainerAwareInterface
      */
     function render($vars = [])
     {
-        $template = __DIR__ . '/../../templates/' . $this->getService('request')->attributes->get('_route') . '.php';
+        $template = __DIR__ . '/../../templates/backend/' . $this->getService('request')->attributes->get('_route') . '.php';
         if (!file_exists($template)) {
             throw new Exception('Template not found.');
         }

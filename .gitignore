@@ -1,9 +1,9 @@
 .idea
-vendor
-web/*
-!web/backend.php
-!web/frontend.php
-!web/.htaccess.dist
-config/config.yml
-cache/doctrine/*
-cache/frontend/*
+/vendor
+/web/*
+!/web/backend.php
+!/web/frontend.php
+!/web/.htaccess.dist
+/config/config.yml
+/cache/doctrine/*
+/cache/frontend/*
