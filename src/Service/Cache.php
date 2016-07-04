@@ -13,7 +13,7 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class Cache
 {
-    private $cacheDir = __DIR__ . '/../../cache/frontend';
+    private $cacheDir;
 
     /**
      * @var Filesystem
@@ -27,6 +27,7 @@ class Cache
 
     public function __construct(Config $config)
     {
+        $this->cacheDir = __DIR__ . '/../../cache/frontend';
         $this->fs = new Filesystem();
         $this->config = $config;
     }
