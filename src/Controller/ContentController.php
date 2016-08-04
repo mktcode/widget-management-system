@@ -73,11 +73,15 @@ class ContentController extends Controller
                 $content->setHash(md5(time() . uniqid()));
                 $content->setActive(1);
             }
+
+            // set category
+            $content->setContentCategory(null);
             if ((int)$_POST['category']) {
                 /** @var ContentCategory $category */
                 $category = $this->getEntityLoader('App\Entity\ContentCategory')->loadById(['id' => (int)$_POST['category']]);
                 $content->setContentCategory($category);
             }
+
             $content->setTitle(trim($_POST['title']));
 
             $this->getEntityManager()->flush();
