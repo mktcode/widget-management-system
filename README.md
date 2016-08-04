@@ -1,4 +1,4 @@
-HTML Widgetizer
+Widget Management System
 ==================
 
 Ein einfaches Tool um statische HTML-Templates mit dynamischen Widgets zu bestücken.
