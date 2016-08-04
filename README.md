@@ -159,3 +159,4 @@ Landingpage
 Demoinstallation
 Tutorial Video
 Sichere Backend-Passwörter beim Installieren generieren
+Google Fonts in TinyMCE integrieren
