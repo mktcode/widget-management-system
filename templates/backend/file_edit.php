@@ -12,7 +12,7 @@ include 'header.php';
             <?php echo $this->translate('save'); ?>
         </button>
         <label>
-            <textarea id="file" name="file"><?php echo $vars['content']; ?></textarea>
+            <textarea id="file" name="file"><?php echo htmlspecialchars($vars['content']); ?></textarea>
         </label>
         <button type="submit" class="uk-button uk-button-success uk-margin-top uk-margin-bottom">
             <i class="uk-icon-check"></i>
