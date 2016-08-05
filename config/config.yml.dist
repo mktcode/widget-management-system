@@ -6,7 +6,7 @@ config:
     db.host: localhost
     db.user: root
     db.pass: root
-    db.name: htmlwidgetizer
+    db.name: wms
     cache.lifetime: 3600
     locale: en
     demo: 0
