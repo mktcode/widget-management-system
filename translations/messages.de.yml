@@ -1,6 +1,6 @@
-content.contents: Inhalte
-content.new_content: Neuer Inhalt
-content.content_saved: Inhalt gespeichert!
+content.contents: Widgets
+content.new_content: Neues Widget
+content.content_saved: Widget gespeichert!
 content.new_category: Neue Kategorie
 content.edit_category: Kategorie bearbeiten
 content.delete_category: Kategorie löschen
@@ -9,23 +9,23 @@ content.category_parent: Elternkategorie
 content.category_saved: Kategorie gespeichert!
 content.category_name_placeholder: Name eingeben...
 content.category_snippet: Snippet
-content.category_snippet.tooltip: Du kannst auch Kategorien in deine Seite einfügen. Dann werden einfach alle aktiven Inhalte dieser Kategorie nacheinander eingefügt.
+content.category_snippet.tooltip: Du kannst auch Kategorien in deine Seite einfügen. Dann werden einfach alle aktiven Widgets dieser Kategorie nacheinander eingefügt.
 content.table.columns.title: Titel
-content.table.columns.title.text: Der Titel wird nicht auf der Seite angezeigt. Er dient nur der internen Bezeichnung von Inhalten.
+content.table.columns.title.text: Der Titel wird nicht auf der Seite angezeigt. Er dient nur der internen Bezeichnung von Widgets.
 content.table.columns.snippet: Snippet
-content.table.columns.snippet.text: Das Snippet muss in einem oder mehreren Templates eingefügt werden. An diesen Stellen erscheint dann der Inhalt.
-content.table.buttons.toggle: Inhalt de-/aktivieren
-content.table.buttons.edit: Inhalt bearbeiten
-content.table.buttons.delete: Inhalt löschen
+content.table.columns.snippet.text: Das Snippet muss in einem oder mehreren Templates eingefügt werden. An diesen Stellen erscheint dann das Widget.
+content.table.buttons.toggle: Widget de-/aktivieren
+content.table.buttons.edit: Widget bearbeiten
+content.table.buttons.delete: Widget löschen
 content.delete.title: Löschen bestätigen
-content.delete.text: Möchten Sie diesen Inhalt wirklich löschen?
+content.delete.text: Möchten Sie dieses Widget wirklich löschen?
 content.delete.cancel: Nein!
 content.delete.confirm: Ja, jetzt löschen!
-content.deleted: Inhalt gelöscht!
+content.deleted: Widget gelöscht!
 content.category.deleted: Kategorie gelöscht!
 content.category.delete.text1: Möchten Sie diese Kategorie wirklich löschen?
-content.category.delete.text2: "Inhalte in dieser Kategorie: <b>%contents_count%</b> (Einschließlich Unterkategorien)"
-content.category.delete.text3: Es werden alle Inhalte, Unterkategorien und deren Inhalte gelöscht!
+content.category.delete.text2: "Widgets in dieser Kategorie: <b>%contents_count%</b> (Einschließlich Unterkategorien)"
+content.category.delete.text3: Es werden alle Widgets, Unterkategorien und deren Widgets gelöscht!
 
 file.files: Dateien
 file.table.columns.file: Datei

@@ -1,6 +1,6 @@
-content.contents: Contenido
-content.new_content: Nuevo Contenido
-content.content_saved: Contenido salvado!
+content.contents: Widgets
+content.new_content: Nuevo Widget
+content.content_saved: Widget salvado!
 content.new_category: Nueva Categoría
 content.edit_category: Editar Categoría
 content.delete_category: Eliminar Categoría
@@ -9,23 +9,23 @@ content.category_parent: Padres Categoría
 content.category_saved: Categoría salvado!
 content.category_name_placeholder: Introduzca el nombre...
 content.category_snippet: Snippet
-content.category_snippet.tooltip: You can also include a whole category into your website. Then all active contents in this category will be displayed.
+content.category_snippet.tooltip: You can also include a whole category into your website. Then all active widgets in this category will be displayed.
 content.table.columns.title: Título
-content.table.columns.title.text: El título no se mostrará en la página. Sirve sólo el nombre interno de contenido.
+content.table.columns.title.text: El título no se mostrará en la página. Sirve sólo el nombre interno de widgets.
 content.table.columns.snippet: Snippet
-content.table.columns.snippet.text: El fragmento se coloca en una o más plantillas. A continuación, el contenido aparecerá en estos lugares.
-content.table.buttons.toggle: Activar/Desactivar el contenido
-content.table.buttons.edit: Editar contenido
-content.table.buttons.delete: Eliminar contenido
+content.table.columns.snippet.text: El fragmento se coloca en una o más plantillas. A continuación, el widget aparecerá en estos lugares.
+content.table.buttons.toggle: Activar/Desactivar el widget
+content.table.buttons.edit: Editar widget
+content.table.buttons.delete: Eliminar widget
 content.delete.title: Confirmar eliminación
-content.delete.text: Realmente desea eliminar este contenido?
+content.delete.text: Realmente desea eliminar este widget?
 content.delete.cancel: No!
 content.delete.confirm: Sí, eliminar ahora!
-content.deleted: Contenido ha sido suprimido!
+content.deleted: Widget ha sido suprimido!
 content.category.deleted: Categoría ha sido suprimido!
 content.category.delete.text1: Realmente desea eliminar este categoría?
-content.category.delete.text2: "Contenidos en esta categoría: <b>%contents_count%</b> (Incluidas las subcategorías)"
-content.category.delete.text3: Se eliminará todas las categorías de contenido y su contenido!
+content.category.delete.text2: "Widgets en esta categoría: <b>%contents_count%</b> (Incluidas las subcategorías)"
+content.category.delete.text3: Se eliminará todas las categorías de widgets y su widgets!
 
 file.files: Archivos
 file.table.columns.file: Archivo
