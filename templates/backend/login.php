@@ -40,6 +40,17 @@
 
     <form class="uk-panel uk-panel-box uk-form" method="post">
         <?php
+        if ($this->getService('config')->get('demo')) {
+            ?><div class="uk-alert uk-alert-info">
+                <i class="uk-icon-key"></i>
+                <?php echo $this->translate('login.demo.accounts'); ?>
+            </div>
+            <div class="uk-alert uk-alert-info">
+                <i class="uk-icon-history"></i>
+                <?php echo $this->translate('login.demo.reset'); ?>
+            </div><?php
+        }
+
         if ($vars['message']) {
             echo $vars['message'];
         }

@@ -39,6 +39,8 @@ login.password: Contraseña
 login.login: Login
 login.goto_website: Ir a la página web
 login.fail: La conexión falló!
+login.demo.accounts: Sign in with <b>admin:admin</b> or <b>editor:editor</b>.
+login.demo.reset: This demo will be resetted once per hour.
 
 cache.clear: Borrar cache
 cache.cleared: El Cache ha sido suprimido!

@@ -39,6 +39,8 @@ login.password: Passwort
 login.login: Login
 login.goto_website: zur Website
 login.fail: Login fehlgeschlagen!
+login.demo.accounts: "Melde dich mit <b>admin:admin</b> oder <b>editor:editor</b> an."
+login.demo.reset: Diese Demo wird einmal pro Stunde zurückgesetzt.
 
 cache.clear: Cache löschen
 cache.cleared: Cache gelöscht!
