@@ -33,7 +33,11 @@ class Database
 
     public function getLoader($entity)
     {
-        return $this->em->getUnitOfWork()->getEntityPersister($entity);
+        try {
+            return $this->em->getUnitOfWork()->getEntityPersister($entity);
+        } catch (\Exception $e) {
+            die($e->getMessage());
+        }
     }
 
     public function createSchema()
