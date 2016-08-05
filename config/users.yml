@@ -1,7 +1,7 @@
-admin: # Benutzername
+admin: # username
     password: 21232f297a57a5a743894a0e4a801fc3 # md5(admin)
-    role: admin # Rolle
+    role: admin # role
 
-editor: # Benutzername
+editor: # username
     password: 5aee9dbd2a188839105073571bee1b1f # md5(editor)
-    role: editor # Rolle
+    role: editor # role
