@@ -149,14 +149,12 @@ Formular Block
 Snippet-Tags mit Kategorie/Titel
 Meta Tags
 Robots.txt
-Cache automatisch löschen bei Änderungen
 Import/Export
 System zurücksetzen
 Löschen/Bearbeiten von Dateien absichern (auf Web-Verzeichnis beschränken)
 Komplettes Dateimanagement für HTML/CSS/JS
 Dokumentation vervollständigen
-Landingpage
-Demoinstallation
-Tutorial Video
+Landingpage fertig stellen
+Tutorial Tour
 Sichere Backend-Passwörter beim Installieren generieren
 Google Fonts in TinyMCE integrieren
