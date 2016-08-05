@@ -41,6 +41,39 @@ class FileController extends Controller
     }
 
     /**
+     * Show the tinymce file browser for the web directory.
+     *
+     * @param string $dir
+     * @return Response
+     */
+    public function tinymceAction($dir = '')
+    {
+        $finder = new Finder();
+        $finder
+            ->in(__DIR__ . '/../../web/' . $dir)
+            ->depth('< 1')
+            ->filter(
+                function (\SplFileInfo $file) {
+                    $restrictedTypes = ['php'];
+
+                    if (!$file->isDir() && in_array($file->getExtension(), $restrictedTypes)) {
+                        return false;
+                    }
+                    return true;
+                }
+            )
+            ->sortByName()
+            ->sortByType();
+
+        return $this->render(
+            [
+                'finder' => $finder,
+                'dir' => $dir
+            ]
+        );
+    }
+
+    /**
      * Show the edit form and save updates to files.
      *
      * @param $file

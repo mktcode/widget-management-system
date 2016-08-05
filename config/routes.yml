@@ -54,6 +54,12 @@ files_clearcache:
     path: /files/clearcache
     defaults: { _controller: 'App\Controller\FileController::clearCacheAction' }
 
+files_tinymce:
+    path: /files/tinymce/{dir}
+    defaults: { _controller: 'App\Controller\FileController::tinymceAction', dir: '' }
+    requirements:
+        dir: .+
+
 files:
     path: /files/{dir}
     defaults: { _controller: 'App\Controller\FileController::indexAction', dir: '' }

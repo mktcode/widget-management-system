@@ -31,6 +31,7 @@ file.files: Archivos
 file.table.columns.file: Archivo
 file.table.columns.type: Tipo
 file.edit: Editar archivo
+file.paste: Insertar archivo
 file.saved: Archivo salvado!
 
 login.username: Nombre de usuario
