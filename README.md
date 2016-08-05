@@ -51,9 +51,9 @@ Configure your database connection and other settings in `config/config.yml`. In
 
 ### .htaccess
 
-For the system to work properly you have to make sure that the file `web/.htaccess` is uploaded to your server.
+For the system to work properly you have to make sure that the file `/web/.htaccess` is uploaded to your server.
 
-It maps all the requests to your website to a php frontcontroller and optionally improves the way your urls look like by removing the `.html` extension. (See comments in `web/.htaccess` for more information.)
+It maps all the requests to your website to a php frontcontroller and optionally improves the way your urls look like by removing the `.html` extension. (See comments in `/web/.htaccess` for more information.)
 
 ### Users
 
