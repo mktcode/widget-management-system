@@ -50,6 +50,10 @@ class Install
                 $fs->mirror(__DIR__ . '/../../templates/frontend/demo', __DIR__ . '/../../web/');
             }
 
+            // write .htaccess
+            $event->getIO()->write("<info>Writing .htaccess file...</info>");
+            $fs->copy(__DIR__ . '/../../web/.htaccess.dist', __DIR__ . '/../../web/.htaccess');
+
             // display installed message
             $event->getIO()->write("\nInstallation successful!\n");
         } catch (\Exception $e) {
