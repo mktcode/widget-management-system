@@ -79,7 +79,7 @@ By default there is one admin and one editor account.
 
 ### Git & Composer
 
-You can also install Widget Management System with git and composer. The public clone urls are:
+You can also install Widget Management System with git and composer.
     
     # switch to your project directory, e.g.:
     cd /srv/www/vhosts/your-website/httpdocs
