@@ -1,6 +1,6 @@
 config:
     page.title: 'Widgetized Website'
-    backend.title: 'HTML Widgetizer'
+    backend.title: 'Widget Management System'
     backend.bg: '#069865'
     backend.color: '#fff'
     db.host: localhost
