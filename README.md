@@ -14,12 +14,14 @@ All requests to your website will be processed by a single php frontcontroller, 
 
 ## Installation
 
-First of all make sure your php verison is 5.4 or higher and you have mod_rewrite installed and enabled on your server.
+First of all make sure your **php verison** is **5.4** or higher and you have **mod_rewrite** installed and enabled on your server.
 
 Just download the pre-packaged archive and extract it to your server.
 
 **IMPORTANT**: The archive contains a directory named `web`. The `DocumentRoot` of your website has to point to this directory and **not** to the main directory you donwloaded.
 This is an important, security related best practice to protect all system related php files from public access.
+
+To **access the backend** call `http://your-website.com/backend.php`.
 
 ### Config
 
