@@ -5,7 +5,7 @@ Widget Management System is a simple tool to extend static HTML pages with dynam
 ## Basic functionality
 
 The basis is a plain old static html template with css and js and so on. It can consist of as many files and subdirectories you want and you are basically free to do what ever your want with it.
-It can also contain php files, e.g. for sending forms etc., although php files are ignored in the backends file editor. This menas you cannot add widgets to php files... because you won't need to. 
+It can also contain php files, e.g. for sending forms etc., although php files are ignored in the backends file editor. This menas you cannot add widgets to php files... because you won't need to. ;-) 
 
 You can choose from a variety of widgets you want to add to your html template. (WYSIWYG, Facebook, Twitter, Instagram, etc.)
 Once you created a widget you can add it to your template just by pasting its snippet code, either by editing the file via ftp or whatever you like or using the backends integrated file editor.
@@ -184,7 +184,7 @@ codemirror syntax highlighting depending on file type
 more blocks
 readable snippet-tags based on title/category
 support for meta tags
-robots.txt
+default robots.txt
 import/export
 system reset
 tutorial tour
